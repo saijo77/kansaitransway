@@ -1,0 +1,61 @@
+@use "../../global" as *;
+.p-pryvacy {
+  width: 100%;
+  &_mb20 {
+    margin-bottom: rem(20);
+  }
+  &_mb30 {
+    margin-bottom: rem(30);
+  }
+  &_mb50 {
+    margin-bottom: rem(50);
+  }
+  &__inner {
+    width: 100%;
+    max-width: rem(1000);
+    margin: 0 auto;
+    padding: rem(20) rem(0) rem(70) rem(0);
+  }
+  &__title {
+    color: #333333;
+    font-family: $font-NotoSerif;
+    font-size: rem(24);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .08em;
+    margin-bottom: rem(30);
+  }
+  &__subTitle {
+    color: #333333;
+    font-family: $font-NotoSerif;
+    font-size: rem(21);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .08em;
+    margin-bottom: rem(20);
+  }
+  &__lists {
+    list-style-type: disc;
+    padding-left: rem(30);
+    margin-bottom: rem(30);
+    list-style-type: decimal;
+    li {
+      color: #333333;
+      font-size: rem(18);
+      font-weight: 500;
+      line-height: calc(27.2 / 18);
+      margin-bottom: rem(10);
+      padding-left: rem(5);
+      &:last-child {
+        margin-bottom: rem(0);
+      }
+    }
+  }
+  &__text {
+    color: #333333;
+    font-size: rem(16);
+    font-weight: 500;
+    line-height: calc(27.2 / 16);
+    letter-spacing: .08em;
+  }
+}

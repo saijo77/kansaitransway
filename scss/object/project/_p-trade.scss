@@ -1,0 +1,300 @@
+@use "../../global" as *;
+.p-trade {
+  width: 100%;
+  &__inner {
+    width: 100%;
+    max-width: rem(1000);
+    margin: 0 auto;
+    padding: rem(90) 0;
+    display: flex;
+    align-items: center;
+    @include mq(md) {
+      flex-wrap: wrap;
+      padding: rem(54) rem(15) rem(40) rem(15);
+      gap: rem(30);
+    }
+  }
+  &__leftBox {
+    width: 50%;
+    @include mq(md) {
+      width: 100%;
+    }
+  }
+  &__rightBox {
+    width: 50%;
+    padding: 0 rem(52);
+    @include mq(md) {
+      width: 100%;
+      padding: 0;
+    }
+  }
+  &__title {
+    font-family: $font-NotoSerif;
+    font-size: rem(28);
+    font-weight: 700;
+    line-height: 1.7;
+    letter-spacing: .08em;
+    margin-bottom: rem(25);
+    @include mq(md) {
+      font-size: rem(24);
+      margin-bottom: rem(20);
+    }
+  }
+  &__text {
+    font-size: rem(16);
+    font-weight: 500;
+    line-height: 2;
+    letter-spacing: .08em;
+  }
+}
+
+.p-trade-transaction {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding: rem(36) rem(0) rem(40) rem(0);
+  &::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: rem(0);
+    right: rem(0);
+    width: rem(50);
+    height: rem(50);
+    border: rem(2) solid #9CD6C8;
+    border-bottom: none;
+    border-left: none;
+  }
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: rem(0);
+    left: rem(0);
+    width: rem(50);
+    height: rem(50);
+    border: rem(2) solid #9CD6C8;
+    border-top: none;
+    border-right: none;
+  }
+  &__title {
+    font-family: $font-NotoSerif;
+    font-size: rem(28);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .08em;
+    margin-bottom: rem(15);
+    @include mq(md) {
+      font-size: rem(24);
+      margin-bottom: rem(13);
+    }
+  }
+  &__text {
+    font-family: $font-NotoSerif;
+    font-size: rem(18);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .08em;
+    margin-bottom: rem(28);
+    @include mq(md) {
+      font-size: rem(16);
+      margin-bottom: rem(26);
+    }
+  }
+  &__subject {
+    font-family: $font-NotoSerif;
+    font-size: rem(21);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .08em;
+    span {
+      font-family: $font-Cinzel;
+      font-size: rem(72);
+      line-height: 1;
+      letter-spacing: 0em;
+      @include mq(md) {
+        font-size: rem(62);
+      }
+    }
+  }
+}
+
+.p-trade-merits {
+  width: 100%;
+  margin-bottom: rem(74);
+  @include mq(md) {
+    margin-bottom: rem(54);
+  }
+  &__inner {
+    width: 100%;
+    background-image: url(../imgs/bg_item.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: repeat;
+    @include mq(md) {
+      background-size: contain;
+      background-position: top;
+      background-image: url(../imgs/bg_item_sp.png);
+    }
+  }
+  &__wrapper {
+    width: 100%;
+    max-width: rem(1000);
+    margin: rem(-16) auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: rem(20);
+    row-gap: rem(30);
+    padding: rem(60) 0 rem(70) 0;
+    @include mq(md) {
+      margin: rem(-15) auto 0 auto;
+      grid-template-columns: repeat(1, 1fr);
+      row-gap: rem(20);
+      padding: rem(55) rem(15) rem(50) rem(15);
+    }
+  }
+  &__box {
+    border: rem(1) solid #CCCCCC;
+    padding: rem(50);
+    background: #ffffff;
+    @include mq(md) {
+      padding: rem(30) rem(15);
+    }
+  }
+  &__bigText {
+    position: relative;
+    font-size: rem(21);
+    line-height: 1.5;
+    font-weight: 500;
+    letter-spacing: .08em;
+    margin-bottom: rem(20);
+    @include mq(md) {
+      font-size: rem(21);
+    }
+    &::before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      bottom: rem(-11);
+      left: 0;
+      width: rem(15);
+      height: rem(1);
+      background: #333333;
+    }
+    span {
+      color: #3FB194;
+      font-weight: 700;
+    }
+  }
+  &__text {
+    font-size: rem(14);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: .08em;
+  }
+}
+
+.p-trade-frow {
+  width: 100%;
+  margin-bottom: rem(45);
+  &__inner {
+    width: 100%;
+    max-width: rem(1000);
+    margin: 0 auto;
+    padding-top: rem(45);
+  }
+  &__band {
+    width: 100%;
+    height: rem(50);
+    background: #333333;
+    color: #ffffff;
+    font-family: $font-NotoSerif;
+    font-size: rem(21);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .08em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: rem(80);
+    padding-top: rem(50);
+  }
+  &__column {
+    position: relative;
+    width: 100%;
+    &::before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: rem(-50);
+      left: 50%;
+      transform: translateX(-50%);
+      width: rem(2);
+      height: rem(50);
+      background: #333333;
+    }
+  }
+  &__subBand {
+    width: 100%;
+    height: rem(50);
+    background: #333333;
+    color: #ffffff;
+    font-family: $font-NotoSerif;
+    font-size: rem(20);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .08em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: rem(30);
+  }
+  &__box {
+    position: relative;
+    padding: rem(7) 0 0 rem(60);
+    margin-bottom: rem(20);
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  &__number {
+    position: absolute;
+    top: rem(0);
+    left: rem(0);
+    width: rem(40);
+    height: rem(40);
+    background: #333333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-family: $font-Cinzel;
+    font-size: rem(18);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .08em;
+    padding: rem(2) 0 0 rem(2);
+  }
+  &__title {
+    position: relative;
+    font-family: $font-NotoSerif;
+    font-size: rem(18);
+    font-weight: 700;
+    letter-spacing: .08em;
+    margin-bottom: rem(20);
+    span {
+      font-size: rem(14);
+    }
+  }
+  &__text {
+    font-size: rem(14);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: .08em;
+  }
+}

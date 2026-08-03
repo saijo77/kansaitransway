@@ -1,0 +1,9 @@
+@use "../global" as *;
+main {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  @include mq(md) {
+    padding-top: rem(60);
+  }
+}

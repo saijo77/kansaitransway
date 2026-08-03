@@ -1,0 +1,163 @@
+@use "../../global" as *;
+
+// トップのグローバルナビのアニメ
+.eachTextAnime {
+  visibility: hidden;
+}
+
+.eachTextAnime span {
+  opacity: 0;
+}
+
+.eachTextAnime.appeartext span {
+  animation: text_anime_on 1s ease forwards;
+}
+
+@keyframes text_anime_on {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+// トップのKansai Tlans Way画像
+.p-front__img {
+  opacity: 0;
+  /* 非表示にする */
+  transform: rotateY(90deg);
+  /* Y軸に対して90度回転しておく */
+  transition: transform 1s, opacity 1s;
+  /* 回転と透明度のアニメーション時間を1sに設定 */
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+// トップの動画
+.p-front {
+  &__rightBox {
+    opacity: 0; // 初期状態で非表示
+    animation: fadeInUp 2s forwards 0s; // 0.5秒後に0.5秒かけてフェードインアップ
+  }
+
+  // トップのタイトル
+  &__title {
+    opacity: 0; //初期状態で非表示
+    animation: fadeIn 0.5s forwards 1s; //1.5秒後に0.5秒かけてフェードイン
+  }
+}
+
+
+// 下からフェードイン
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.will-fadeIn {
+  opacity: 0; // 非表示の初期状態
+  transform: translateY(50px); // 初期位置の指定
+}
+
+.fadeIn {
+  opacity: 1; // 表示する
+  transform: translateY(0); // 元の位置に戻す
+  animation: fadeIn 1s forwards;
+}
+
+// ズームイン
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.will-zoomIn {
+  opacity: 0; // 非表示の初期状態
+  transform: scale(0.8); // 初期サイズを80%に
+}
+
+.zoomIn {
+  opacity: 1; // 表示する
+  transform: scale(1); // 通常サイズに戻す
+  animation: zoomIn 1s forwards;
+}
+
+// 順番アニメーション
+.fade-item {
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 1s, opacity 1s;
+}
+
+.card-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+// 順番アニメーション
+
+.p-logistic-item02__text,
+.p-logistic-item02__icon {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.5s, transform 0.3s;
+
+  @include mq(md) {
+    transform: translateX(0%);
+    transform: translateY(100%);
+  }
+}
+
+.p-logistic-item02__text.visible {
+  opacity: 1;
+  transform: translateX(0);
+
+  @include mq(md) {
+    transform: translateY(0%);
+  }
+}
+
+.p-logistic-item02__icon.visible {
+  opacity: 1;
+  transform: translateX(0);
+
+  @include mq(md) {
+    transform: translateY(0) rotate(90deg);
+  }
+}

@@ -1,0 +1,235 @@
+@use "../../global" as *;
+
+$hb-blue: #005cab;
+$hb-purple: #b8a8e8;
+
+.c-hamburger {
+  display: none;
+  position: relative;
+  width: rem(20);
+  height: rem(19);
+  cursor: pointer;
+  transition: .3s;
+  z-index: 11;
+
+  @include mq(md) {
+    display: block;
+  }
+
+  & span {
+    display: block;
+    position: absolute;
+    width: rem(20);
+    height: 1px;
+    left: rem(0);
+    background: $hb-blue;
+    transition: 0.3s;
+
+    &:nth-child(1) {
+      top: rem(0);
+    }
+
+    &:nth-child(2) {
+      top: rem(9);
+    }
+
+    &:nth-child(3) {
+      top: rem(18);
+    }
+  }
+}
+
+.c-hamburger.active {
+  width: rem(41);
+  height: rem(41);
+  border: 1px solid $hb-blue;
+  border-radius: 50%;
+}
+
+.c-hamburger.active span:nth-child(1) {
+  top: rem(19);
+  left: rem(9);
+  background: $hb-blue;
+  transform: rotate(-45deg);
+}
+
+.c-hamburger.active span:nth-child(2) {
+  display: none;
+}
+
+.c-hamburger.active span:nth-child(3) {
+  top: rem(19);
+  left: rem(9);
+  background: $hb-blue;
+  transform: rotate(45deg);
+}
+
+.c-hamburger-nav {
+  position: fixed;
+  top: rem(60);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - rem(60));
+  height: calc(100dvh - rem(60));
+  overflow: hidden;
+  background: linear-gradient(180deg, $hb-blue 0%, $hb-purple 100%);
+  z-index: 9;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &__inner {
+    width: 100%;
+    height: 100%;
+    padding: rem(20);
+    overflow-y: auto;
+  }
+
+  &__panel {
+    width: 100%;
+    background: #ffffff;
+    border-radius: rem(16);
+    overflow: hidden;
+    box-shadow: 0 rem(8) rem(24) rgba(0, 0, 0, 0.08);
+  }
+
+  &__lists {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    border-bottom: 1px solid #e0e0e0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &.is-open {
+      .c-hamburger-nav__icon--plus::after {
+        opacity: 0;
+      }
+    }
+  }
+
+  &__parent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(12);
+    width: 100%;
+    padding: rem(18) rem(20);
+    border: none;
+    background: transparent;
+    text-align: left;
+    font-family: inherit;
+    font-size: rem(16);
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+    color: #111111;
+    cursor: pointer;
+    text-decoration: none;
+
+    &--link {
+      cursor: pointer;
+    }
+  }
+
+  &__label {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+
+    &--plus {
+      position: relative;
+      width: rem(20);
+      height: rem(20);
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background: $hb-blue;
+        transform: translate(-50%, -50%);
+        transition: opacity 0.2s ease;
+      }
+
+      &::before {
+        width: rem(14);
+        height: rem(2);
+      }
+
+      &::after {
+        width: rem(2);
+        height: rem(14);
+      }
+    }
+
+    &--arrow {
+      width: rem(8);
+      height: rem(8);
+      border-top: rem(2) solid $hb-blue;
+      border-right: rem(2) solid $hb-blue;
+      transform: rotate(45deg);
+    }
+  }
+
+  &__submenu {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0 rem(12) rem(12);
+  }
+
+  &__item.is-open > &__submenu {
+    display: block;
+  }
+
+  &__subitem {
+    &:not(:last-child) {
+      margin-bottom: rem(8);
+    }
+  }
+
+  &__child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(12);
+    padding: rem(14) rem(16);
+    border-radius: rem(8);
+    background: linear-gradient(90deg, #e3f0fa 0%, #ede7f8 100%);
+    color: #111111;
+    font-size: rem(14);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+
+    .c-hamburger-nav__icon--arrow {
+      border-color: #111111;
+    }
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}
+
+.c-hamburger-nav.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.is-hamburger-open {
+  overflow: hidden;
+}

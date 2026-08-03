@@ -1,0 +1,1056 @@
+@use "../../global" as *;
+
+.p-logistic-item {
+  width: 100%;
+  position: relative;
+  z-index: 3;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: rem(-42);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: rem(44) rem(70) 0 rem(70);
+    border-color: #ffffff transparent transparent transparent;
+
+    @include mq(md) {
+      bottom: rem(-42);
+      border-width: rem(44) rem(50) 0 rem(50);
+    }
+  }
+
+  &__inner {
+    width: 100%;
+    max-width: rem(1200);
+    margin: 0 auto;
+    padding: rem(0) 0 rem(35) 0;
+
+    @include mq(md) {
+      padding: rem(0) rem(30) rem(35) rem(30);
+    }
+  }
+
+  &__title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #005CAB;
+    font-size: rem(28);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .05em;
+    text-align: center;
+    margin-bottom: rem(50);
+
+    @include mq(md) {
+      font-size: rem(18);
+    }
+
+    &::before {
+      content: '';
+      display: inline-block;
+      position: relative;
+      width: rem(64);
+      height: rem(86);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-image: url(../img/archive/logistic_icon_l.png);
+      margin-right: rem(35);
+
+      @include mq(md) {
+        width: calc(rem(64) * .7);
+        height: calc(rem(86) * .7);
+        margin-right: rem(10);
+      }
+    }
+
+    &::after {
+      content: '';
+      display: inline-block;
+      position: relative;
+      width: rem(64);
+      height: rem(86);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-image: url(../img/archive/logistic_icon_r.png);
+      margin-left: rem(15);
+
+      @include mq(md) {
+        width: calc(rem(64) * .7);
+        height: calc(rem(86) * .7);
+        margin-left: rem(5);
+      }
+    }
+  }
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @include mq(md) {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: rem(40);
+    }
+  }
+
+  &__box {
+    position: relative;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__text {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: rem(290);
+    height: rem(165);
+    background: #005CAB;
+    border-radius: rem(10);
+    padding: rem(20) 0;
+    color: #FFFFFF;
+    font-size: rem(16);
+    font-weight: 500;
+    line-height: calc(24 / 16);
+    letter-spacing: .05em;
+
+    @include mq(md) {
+      margin: 0 auto;
+    }
+
+    &::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      right: rem(64);
+      bottom: rem(-25);
+      width: rem(34);
+      height: rem(25);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-image: url(../img/archive/logistic_triangle.png);
+    }
+
+    &_bg {
+      background: #4389C6;
+
+      &::after {
+        background-image: url(../img/archive/logistic_triangle02.png);
+      }
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: auto;
+    height: rem(123);
+    margin: rem(18) auto rem(25) auto;
+  }
+
+  &__name {
+    color: #0E171E;
+    font-size: rem(16);
+    font-weight: 500;
+    line-height: calc(24 / 16);
+    letter-spacing: .05em;
+  }
+}
+
+.p-logistic-item02 {
+  width: 100%;
+  background: #005CAB;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: rem(-42);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: rem(44) rem(70) 0 rem(70);
+    border-color: #005CAB transparent transparent transparent;
+
+    @include mq(md) {
+      bottom: rem(-42);
+      border-width: rem(44) rem(50) 0 rem(50);
+    }
+  }
+
+  &__inner {
+    width: 100%;
+    max-width: rem(1200);
+    margin: 0 auto;
+    padding: rem(130) 0 rem(90) 0;
+
+    @include mq(md) {
+      padding: rem(100) rem(30) rem(90) rem(30);
+    }
+  }
+
+  &__title {
+    position: relative;
+    color: #ffffff;
+    font-size: rem(28);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .05em;
+    text-align: center;
+    margin-bottom: rem(50);
+
+    @include mq(md) {
+      font-size: rem(20);
+      line-height: 1.3;
+    }
+  }
+
+  &__wrapper {
+    width: 100%;
+    max-width: rem(926);
+    margin: 0 auto rem(40) auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mq(md) {
+      flex-flow: column;
+      justify-content: center;
+      gap: rem(20);
+    }
+  }
+
+  &__text {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: rem(126);
+    height: rem(126);
+    border-radius: 50%;
+    border: rem(4) solid #ffffff;
+    color: #FFFFFF;
+    font-size: rem(20);
+    font-weight: 700;
+    letter-spacing: .05em;
+  }
+
+  &__icon {
+    display: block;
+    width: rem(24);
+
+    @include mq(md) {
+      position: relative;
+      transform: rotate(90deg);
+    }
+  }
+
+  &__text02 {
+    color: #ffffff;
+    font-size: rem(28);
+    font-weight: 700;
+    line-height: calc(40 / 28);
+    letter-spacing: .05em;
+    text-align: center;
+
+    @include mq(md) {
+      font-size: rem(24);
+      text-align: left;
+    }
+  }
+}
+
+.p-logistic-item03 {
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(../img/archive/logistic_bg.jpg);
+
+  &__inner {
+    width: 100%;
+    max-width: rem(1200);
+    margin: 0 auto;
+    padding: rem(125) 0 rem(90) 0;
+
+    @include mq(md) {
+      padding: rem(80) rem(30) rem(60) rem(30);
+    }
+  }
+
+  &__title {
+    position: relative;
+    color: #005CAB;
+    font-size: rem(36);
+    font-weight: 700;
+    line-height: calc(48 / 36);
+    letter-spacing: .05em;
+    text-align: center;
+    margin-bottom: rem(40);
+
+    @include mq(md) {
+      font-size: rem(24);
+    }
+  }
+
+  &__text {
+    color: #0E171E;
+    font-size: rem(16);
+    line-height: calc(40 / 16);
+    letter-spacing: .05em;
+    text-align: center;
+
+    @include mq(md) {
+      text-align: left;
+      line-height: 2;
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: rem(24);
+  }
+}
+
+.p-logistic-item04 {
+  width: 100%;
+
+  &__inner {
+    width: 100%;
+    max-width: rem(1200);
+    margin: 0 auto;
+    padding: rem(110) 0 rem(100) 0;
+
+    @include mq(md) {
+      padding: rem(60) rem(30);
+    }
+  }
+
+  &__title {
+    position: relative;
+    color: #005CAB;
+    font-size: rem(36);
+    font-weight: 700;
+    line-height: calc(48 / 36);
+    letter-spacing: .05em;
+    margin-bottom: rem(25);
+
+    @include mq(md) {
+      font-size: rem(20);
+    }
+  }
+
+  &__text {
+    color: #0E171E;
+    font-size: rem(16);
+    line-height: calc(28 / 16);
+    letter-spacing: .05em;
+    margin-bottom: rem(30);
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    @include mq(md) {
+      flex-wrap: wrap;
+      gap: rem(50);
+    }
+  }
+
+  &__box {
+    width: 100%;
+    max-width: rem(380);
+
+    @include mq(md) {
+      max-width: 100%;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    margin-bottom: rem(24);
+
+    @include mq(md) {
+      margin-bottom: rem(20);
+    }
+  }
+
+  &__name {
+    color: #0E171E;
+    font-size: rem(20);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .05em;
+    text-align: center;
+  }
+}
+
+.slider-loop {
+  margin-top: rem(50);
+
+  div {
+    padding-right: rem(10);
+  }
+}
+
+.p-logistic-item05 {
+  position: relative;
+  width: 100%;
+
+  @include mq(md) {
+    margin-bottom: rem(60);
+  }
+
+  &__inner {
+    width: 100%;
+    // max-width: rem(1160);
+    margin: 0 auto;
+    padding: rem(0) 0 rem(100) 0;
+
+    @include mq(md) {
+      padding: rem(0) 0 rem(0) 0;
+    }
+  }
+
+  &__title {
+    position: relative;
+    color: #005CAB;
+    font-size: rem(36);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .05em;
+    text-align: center;
+    margin-bottom: rem(45);
+
+    @include mq(md) {
+      font-size: rem(24);
+      line-height: 1.5;
+    }
+  }
+
+  &__text {
+    position: relative;
+    color: #0E171E;
+    font-size: rem(16);
+    line-height: calc(28 / 16);
+    letter-spacing: .05em;
+    text-align: center;
+    z-index: 2;
+
+    @include mq(md) {
+      padding: 0 rem(20);
+      text-align: left;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    margin-top: rem(40);
+
+    @include mq(md) {
+      margin-top: rem(30);
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    bottom: rem(0);
+    right: rem(0);
+    width: rem(1020);
+    height: rem(230);
+    background: #F1F4F8;
+    border-top-left-radius: rem(30);
+    border-bottom-left-radius: rem(30);
+    z-index: -1;
+
+    @include mq(md) {
+      bottom: rem(-50);
+      width: 80%;
+      height: 90%;
+      border-top-left-radius: rem(10);
+      border-bottom-left-radius: rem(10);
+    }
+  }
+}
+
+.p-logistic-item06 {
+  position: relative;
+  width: 100%;
+
+  &__inner {
+    width: 100%;
+    max-width: rem(1200);
+    margin: 0 auto;
+    padding: rem(110) 0 rem(120) 0;
+
+    @include mq(md) {
+      padding: rem(60) rem(30);
+    }
+  }
+
+  &__title {
+    position: relative;
+    color: #005CAB;
+    font-size: rem(36);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .05em;
+    text-align: center;
+    margin-bottom: rem(55);
+
+    @include mq(md) {
+      font-size: rem(22);
+      margin-bottom: rem(40);
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    @include mq(md) {
+      flex-wrap: wrap;
+      gap: rem(40);
+    }
+  }
+
+  &__img {
+    width: 100%;
+    max-width: rem(580);
+  }
+}
+
+.p-logistic-item07 {
+  position: relative;
+  width: 100%;
+
+  &__inner {
+    width: 100%;
+    max-width: rem(1200);
+    margin: 0 auto;
+    padding: rem(0) 0 rem(120) 0;
+
+    @include mq(md) {
+      padding: rem(60) rem(30);
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+
+    @include mq(md) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__wrapper02 {
+    display: flex;
+    justify-content: space-between;
+
+    @include mq(md) {
+      flex-wrap: wrap;
+      gap: rem(50);
+    }
+  }
+
+  &__img {
+    width: 100%;
+    max-width: rem(698);
+
+    @include mq(md) {
+      max-width: 100%;
+    }
+  }
+
+  &__title {
+    position: relative;
+    color: #005CAB;
+    font-size: rem(36);
+    font-weight: 700;
+    line-height: calc(48 / 36);
+    letter-spacing: .05em;
+    margin: rem(55) 0 rem(95) rem(-30);
+
+    @include mq(md) {
+      font-size: rem(24);
+      text-align: center;
+      margin: rem(0) 0 rem(30) rem(0);
+    }
+  }
+
+  &__text {
+    font-size: rem(18);
+    font-weight: 700;
+    line-height: calc(28 / 18);
+    letter-spacing: .05em;
+    margin: rem(0) rem(0) rem(85) rem(30);
+    z-index: 2;
+
+    @include mq(md) {
+      margin: rem(0) rem(0) rem(30) rem(0);
+    }
+  }
+
+  &__text02 {
+    font-size: rem(18);
+    font-weight: 700;
+    line-height: calc(28 / 18);
+    letter-spacing: .05em;
+    margin: rem(0) rem(0) rem(60) rem(50);
+    z-index: 2;
+
+    @include mq(md) {
+      margin: rem(0) rem(0) rem(30) rem(0);
+    }
+  }
+
+  &__text03 {
+    font-size: rem(18);
+    font-weight: 700;
+    line-height: calc(28 / 18);
+    letter-spacing: .05em;
+    margin: rem(0) rem(0) rem(50) rem(-20);
+    z-index: 2;
+
+    @include mq(md) {
+      margin: rem(0) rem(0) rem(30) rem(0);
+    }
+  }
+
+  &__text04 {
+    font-size: rem(18);
+    font-weight: 700;
+    line-height: calc(28 / 18);
+    letter-spacing: .05em;
+    margin: rem(0) rem(0) rem(0) rem(-80);
+    z-index: 2;
+
+    @include mq(md) {
+      margin: rem(0) rem(0) rem(30) rem(0);
+    }
+  }
+
+  &__box {
+    display: block;
+    width: 100%;
+    max-width: rem(290);
+  }
+
+  &__name {
+    color: #0E171E;
+    font-size: rem(18);
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-top: rem(13);
+  }
+}
+
+.p-logistic-item08 {
+  position: relative;
+  width: 100%;
+  background: #005CAB;
+  z-index: 2;
+
+  &__inner {
+    width: 100%;
+    max-width: rem(1200);
+    margin: 0 auto;
+    padding: rem(110) 0 rem(120) 0;
+
+    @include mq(md) {
+      padding: rem(60) rem(30);
+    }
+  }
+
+  &__title {
+    color: #ffffff;
+    font-size: rem(36);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .05em;
+    margin-bottom: rem(45);
+
+    @include mq(md) {
+      font-size: rem(24);
+      line-height: 1.3;
+      margin-bottom: rem(30);
+    }
+  }
+
+  &__text {
+    color: #ffffff;
+    font-size: rem(16);
+    line-height: calc(28 / 16);
+    letter-spacing: .05em;
+    margin-bottom: rem(70);
+
+    @include mq(md) {
+      margin-top: rem(20);
+      margin-bottom: rem(50);
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: rem(44);
+    right: rem(0);
+    width: 100%;
+    max-width: rem(745);
+    z-index: -1;
+
+    @include mq(md) {
+      position: relative;
+      top: auto;
+      right: auto;
+      max-width: 100%;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    @include mq(md) {
+      flex-wrap: wrap;
+      gap: rem(50);
+    }
+  }
+
+  &__box {
+    width: 100%;
+    max-width: rem(290);
+    min-height: rem(366);
+    background: #ffffff;
+    border-radius: rem(10);
+    padding: 0 rem(20);
+
+    @include mq(md) {
+      max-width: 100%;
+      min-height: auto;
+      padding: 0 rem(20) rem(40) rem(20);
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 100%;
+    max-width: rem(57);
+    margin: rem(43) auto rem(30) auto;
+  }
+
+  &__icon02 {
+    display: block;
+    width: 100%;
+    max-width: rem(45);
+    margin: rem(41) auto rem(24) auto;
+  }
+
+  &__icon03 {
+    display: block;
+    width: 100%;
+    max-width: rem(64);
+    margin: rem(38) auto rem(23) auto;
+  }
+
+  &__icon04 {
+    display: block;
+    width: 100%;
+    max-width: rem(58);
+    margin: rem(42) auto rem(25) auto;
+  }
+
+  &__title02 {
+    color: #0E171E;
+    font-size: rem(18);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .05em;
+    text-align: center;
+    margin-bottom: rem(17);
+  }
+
+  &__text02 {
+    color: #0E171E;
+    font-size: rem(16);
+    line-height: calc(28 / 16);
+    letter-spacing: .05em;
+    border-top: rem(1) solid #D1D1D1;
+    padding-top: rem(15);
+  }
+}
+
+.p-logistic-item09 {
+  position: relative;
+  width: 100%;
+
+  &__inner {
+    width: 100%;
+    max-width: rem(1000);
+    margin: 0 auto;
+    padding: rem(110) 0 rem(120) 0;
+
+    @include mq(md) {
+      padding: rem(60) rem(30);
+    }
+  }
+
+  &__title {
+    position: relative;
+    color: #005CAB;
+    font-size: rem(36);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .05em;
+    text-align: center;
+    margin-bottom: rem(45);
+
+    @include mq(md) {
+      font-size: rem(24);
+      line-height: 1.3;
+      margin-bottom: rem(40);
+    }
+  }
+
+  &__text {
+    color: #0E171E;
+    font-size: rem(16);
+    line-height: calc(28 / 16);
+    letter-spacing: .05em;
+    text-align: center;
+    margin-bottom: rem(40);
+
+    @include mq(md) {
+      text-align: left;
+    }
+  }
+
+  &__img {
+    width: 100%;
+  }
+}
+
+.p-logistic-item10 {
+  position: relative;
+  width: 100%;
+  background: #F1F4F8;
+
+  &__inner {
+    width: 100%;
+    max-width: rem(1200);
+    margin: 0 auto;
+    padding: rem(110) 0 rem(120) 0;
+
+    @include mq(md) {
+      padding: rem(60) rem(30);
+    }
+  }
+
+  &__title {
+    position: relative;
+    color: #005CAB;
+    font-size: rem(36);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .05em;
+    text-align: center;
+    margin-bottom: rem(45);
+
+    @include mq(md) {
+      font-size: rem(24);
+      line-height: 1.3;
+      margin-bottom: rem(40);
+    }
+  }
+
+  &__text {
+    color: #0E171E;
+    font-size: rem(16);
+    line-height: calc(28 / 16);
+    letter-spacing: .05em;
+    text-align: center;
+    margin-bottom: rem(45);
+
+    @include mq(md) {
+      text-align: left;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mq(md) {
+      flex-wrap: wrap;
+      gap: rem(30);
+      justify-content: center;
+    }
+  }
+
+  &__box {
+    width: 100%;
+    max-width: rem(580);
+    background: #ffffff;
+  }
+
+  &__imgBox {
+    width: 100%;
+    background: #ffffff;
+    padding: rem(15) rem(30) rem(25) rem(30);
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__band {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: rem(45);
+    border-top-left-radius: rem(10);
+    border-top-right-radius: rem(10);
+    background: #666666;
+    color: #ffffff;
+    font-size: rem(16);
+    font-weight: 700;
+    line-height: 1;
+    padding-left: rem(28);
+
+    @include mq(md) {
+      height: auto;
+      line-height: 1.5;
+      padding: rem(15) rem(20);
+    }
+
+    &_blue {
+      background: #00335F;
+    }
+  }
+
+  &__triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: rem(22.5) rem(22.5) rem(22.5) rem(22.5);
+    border-color: transparent transparent transparent #1976D2;
+    transform: translateX(rem(12));
+
+    @include mq(md) {
+      transform: translate(rem(4), rem(10)) rotate(90deg);
+    }
+  }
+}
+
+.p-logistic-item11 {
+  position: relative;
+  width: 100%;
+
+  &__inner {
+    width: 100%;
+    max-width: rem(1200);
+    margin: 0 auto;
+    padding: rem(110) 0 rem(120) 0;
+
+    @include mq(md) {
+      padding: rem(60) rem(30);
+    }
+  }
+
+  &__title {
+    position: relative;
+    color: #005CAB;
+    font-size: rem(36);
+    font-weight: 700;
+    line-height: calc(48 / 36);
+    letter-spacing: .05em;
+    text-align: center;
+    margin-bottom: rem(45);
+
+    @include mq(md) {
+      font-size: rem(22);
+      margin-bottom: rem(30);
+    }
+  }
+
+  &__text {
+    color: #0E171E;
+    font-size: rem(16);
+    line-height: calc(28 / 16);
+    letter-spacing: .05em;
+    text-align: center;
+    margin-bottom: rem(45);
+
+    @include mq(md) {
+      text-align: left;
+    }
+  }
+
+  &__title02 {
+    color: #0E171E;
+    font-size: rem(18);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .05em;
+    text-align: center;
+    margin-bottom: rem(17);
+  }
+
+  &__text02 {
+    color: #0E171E;
+    font-size: rem(16);
+    line-height: calc(28 / 16);
+    letter-spacing: .05em;
+    padding: rem(15) rem(10) rem(0) rem(10);
+    border-top: rem(1) solid #D1D1D1;
+  }
+
+  &__img {
+    width: 100%;
+    margin-bottom: rem(65);
+  }
+
+  &__img02 {
+    width: 100%;
+    border-radius: rem(10);
+    margin-bottom: rem(23);
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    @include mq(md) {
+      flex-wrap: wrap;
+      gap: rem(50);
+    }
+  }
+
+  &__box {
+    width: 100%;
+    max-width: rem(290);
+    background: #ffffff;
+
+    @include mq(md) {
+      max-width: 100%;
+    }
+  }
+}

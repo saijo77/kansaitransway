@@ -1,0 +1,328 @@
+@use "../../global" as *;
+
+// ヘッダーロゴと同じ左右余白（CSR見出し用）
+$csr-padding-x-pc: rem(40);
+$csr-padding-x-sp: rem(20);
+// タイトル・本文の追加余白
+$csr-text-inset-pc: rem(192);
+$csr-text-inset-sp: 0;
+
+.p-csr {
+  width: 100%;
+  font-family: $font-main;
+
+  &__inner {
+    width: 100%;
+    padding: rem(130) $csr-padding-x-pc rem(120);
+
+    @include mq(md) {
+      padding: rem(48) $csr-padding-x-sp rem(80);
+    }
+  }
+
+  &__hero {
+    position: relative;
+    margin-bottom: rem(48);
+
+    @include mq(md) {
+      margin-bottom: rem(32);
+    }
+  }
+
+  &__head {
+    display: inline-block;
+  }
+
+  &__labelEn {
+    font-family: $font-mincho;
+    font-size: rem(96);
+    line-height: 1;
+    letter-spacing: 0.05em;
+    color: #010101;
+    margin: rem(24) 0 rem(16);
+
+    @include mq(md) {
+      font-size: rem(60);
+      margin-top: rem(8);
+      margin-bottom: rem(12);
+    }
+
+    @include mq(sm) {
+      font-size: rem(52);
+    }
+  }
+
+  &__labelJa {
+    font-family: $font-NotoSans;
+    font-size: rem(16);
+    font-weight: 400;
+    line-height: calc(28 / 16);
+    letter-spacing: 0.05em;
+    color: #0e171e;
+    margin: 0;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  // ヘッダーメニュー右端と揃える（PC）
+  &__acronym {
+    position: absolute;
+    top: rem(24);
+    right: 0;
+    margin: 0;
+    font-family: $font-mincho;
+    font-size: rem(16);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+    color: #010101;
+    text-align: right;
+
+    span {
+      display: block;
+    }
+
+    @include mq(md) {
+      position: static;
+      margin-top: rem(16);
+      text-align: left;
+
+      span {
+        display: inline;
+      }
+
+      span + span::before {
+        content: ' ';
+      }
+    }
+  }
+
+  &__title {
+    font-family: $font-NotoSerif;
+    font-size: rem(48);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.05em;
+    color: #010101;
+    margin: 0 0 rem(48);
+    padding-left: $csr-text-inset-pc;
+    padding-right: $csr-text-inset-pc;
+
+    @include mq(md) {
+      font-size: rem(28);
+      margin-bottom: rem(32);
+      padding-left: $csr-text-inset-sp;
+      padding-right: $csr-text-inset-sp;
+    }
+
+    @include mq(sm) {
+      font-size: rem(24);
+    }
+  }
+
+  &__content {
+    font-family: $font-NotoSans;
+    font-size: rem(16);
+    font-weight: 400;
+    line-height: calc(28 / 16);
+    letter-spacing: 0.05em;
+    color: #0e171e;
+    padding-left: $csr-text-inset-pc;
+    padding-right: $csr-text-inset-pc;
+
+    @include mq(md) {
+      padding-left: $csr-text-inset-sp;
+      padding-right: $csr-text-inset-sp;
+    }
+
+    > *:first-child {
+      margin-top: 0;
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+
+    // 固定ページテンプレート共通 h2
+    h2 {
+      font-family: $font-mincho;
+      font-size: rem(28);
+      font-weight: 500;
+      line-height: 1.45;
+      letter-spacing: 0.05em;
+      color: $black;
+      margin: rem(80) 0 rem(32);
+
+      @include mq(md) {
+        font-size: rem(22);
+        margin: rem(56) 0 rem(24);
+      }
+    }
+
+  h3 {
+      font-family: $font-NotoSans;
+      font-size: rem(24);
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: 0.05em;
+      color: #005cab;
+      border-left: 4px solid #005cab;
+      padding-left: rem(15);
+      margin: rem(50) 0 rem(20);
+
+      @include mq(md) {
+        font-size: rem(20);
+        margin: rem(40) 0 rem(16);
+        padding-left: rem(12);
+      }
+    }
+
+    h4 {
+      font-family: $font-NotoSans;
+      font-weight: 700;
+      line-height: 1.5;
+      margin: rem(40) 0 rem(16);
+      font-size: rem(18);
+
+      @include mq(md) {
+        font-size: rem(16);
+      }
+    }
+
+    p {
+      margin-bottom: rem(24);
+    }
+
+    ul,
+    ol {
+      margin-bottom: rem(24);
+      padding-left: rem(24);
+    }
+
+    li {
+      margin-bottom: rem(8);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    a {
+      color: #005cab;
+      text-decoration: underline;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
+  }
+
+  // レイアウト: 左=h2+本文 / 右=画像
+  &__layout--text-image {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: rem(48) rem(56);
+    align-items: start;
+    margin: rem(80) 0;
+
+    @include mq(md) {
+      grid-template-columns: 1fr;
+      gap: rem(24);
+      margin: rem(56) 0;
+    }
+
+    .p-csr__layoutMain {
+      min-width: 0;
+
+      h2 {
+        margin-top: 0;
+      }
+    }
+
+    .p-csr__layoutMedia {
+      min-width: 0;
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  // レイアウト: 画像1カラム
+  &__layout--image {
+    margin: rem(80) 0;
+
+    @include mq(md) {
+      margin: rem(56) 0;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // レイアウト: 本文2カラム（左→右）
+  &__layout--text-2col {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: rem(48) rem(56);
+    align-items: start;
+    margin: rem(80) 0;
+
+    @include mq(md) {
+      grid-template-columns: 1fr;
+      gap: rem(24);
+      margin: rem(56) 0;
+    }
+  }
+
+  &-lead {
+    font-size: rem(18);
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: rem(40);
+    font-weight: 700;
+  }
+
+  &-subTitle {
+    font-family: $font-mincho;
+    font-size: rem(28);
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: 0.05em;
+    color: $black;
+    margin: rem(80) 0 rem(32);
+
+    @include mq(md) {
+      font-size: rem(22);
+      margin: rem(56) 0 rem(24);
+    }
+  }
+
+  &-list {
+    margin-bottom: rem(25);
+    padding-left: rem(20);
+
+    li {
+      font-size: rem(16);
+      line-height: 1.8;
+      margin-bottom: rem(10);
+      list-style-type: disc;
+    }
+  }
+}
+
+.p-csr,
+.p-csr * {
+  font-family: $font-main !important;
+}

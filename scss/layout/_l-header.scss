@@ -1,0 +1,153 @@
+@use "../global" as *;
+.l-header {
+  position: fixed;
+  top: 0%;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  z-index: 10;
+  &__inner {
+    width: 100%;
+    height: rem(90);
+    padding: 0 rem(40);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    @include mq(md) {
+      height: rem(60);
+      padding: 0 rem(20);
+    }
+  }
+  &__logo {
+    display: inline-block;
+    width: rem(152);
+    @include mq(md) {
+      width: rem(142);
+    }
+  }
+  &__box {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 11;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: rem(20);
+  }
+  &__img {
+    display: none;
+    @include mq(md) {
+      display: block;
+      width: rem(72);
+    }
+  }
+}
+
+.l-header-nav {
+  @include mq(md) {
+    display: none;
+  }
+  &__lists {
+    display: flex;
+    align-items: center;
+    gap: rem(30);
+  }
+  &__list {
+    position: relative;
+  }
+  &__link {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: rem(90);
+    color: #010101;
+    font-size: rem(14);
+    line-height: 1;
+    letter-spacing: .1em;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: rem(20);
+      left: 0;
+      /*線の形状*/
+      width: 100%;
+      height: rem(2);
+      background:#0049A3;
+      transition: all .3s;
+      transform: scale(0, 1);
+      transform-origin: left top;
+    }
+    &:hover::after {
+      transform: scale(1, 1);
+    }
+  }
+  &__lists02 {
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    left: rem(0);
+    top: 100%;
+    width: rem(188);
+    background: #005CAB;
+    padding: 0 rem(10);
+    transition: max-height 0.3s ease, opacity 0.3s; /* 追加：opacityのトランジション */
+    opacity: 0; /* 追加：初期状態で透明 */
+  }
+  &__list02 {
+    width: 100%;
+    border-bottom: 1px solid #FFFFFF;
+    transition: .3s;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  &__link02 {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    color: #ffffff;
+    font-size: rem(14);
+    line-height: 1.5;
+    letter-spacing: .1em;
+    padding: rem(15) rem(20) rem(15) 0;
+    &:hover {
+      opacity: .7;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 52%;
+      transform: translateY(-50%);
+      right: rem(10);
+      width:0;
+      height:0;
+      border-style:solid;
+      border-width: rem(3.5) 0 rem(3.5) rem(6);
+      border-color: transparent transparent transparent #FFFFFF;
+    }
+  }
+}
+
+/* front-page.phpのヘッダーのスタイル */
+.front-page-header {
+  top: -100%; /* 初期状態では隠れている */
+  transition: top 0.3s; /* アニメーション効果 */
+}
+
+/* l-header-nav__listにホバーした際に、その子要素のl-header-nav__lists02を表示 */
+.l-header-nav__list:hover .l-header-nav__lists02 {
+  max-height: 500px; /* ここにサブメニューの最大の高さを設定 */
+  opacity: 1; /* ホバー時に不透明に */
+}
+
+/* l-header-nav__lists02自体にホバーしている間は表示状態を維持 */
+.l-header-nav__lists02:hover {
+  max-height: 500px; /* ここにサブメニューの最大の高さを設定 */
+  opacity: 1; /* ホバー時に不透明に */
+}
+
+

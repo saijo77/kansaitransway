@@ -1,0 +1,63 @@
+@use "../../global" as *;
+.c-title {
+  text-align: center;
+  &__band {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3FB194;
+    font-family: $font-Cinzel;
+    font-size: rem(16);
+    line-height: 1;
+    letter-spacing: .08em;
+    gap: rem(14);
+    margin-bottom: rem(20);
+    @include mq(md) {
+      margin-bottom: rem(16);
+    }
+    &::before,
+    &::after {
+      content: '';
+      display: inline-block;
+      position: relative;
+      width: rem(4);
+      height: rem(4);
+      background: #3FB194;
+      border-radius: 50%;
+    }
+  }
+  &__text {
+    font-family: $font-NotoSerif;
+    font-size: rem(32);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .08em;
+    @include mq(md) {
+      font-size: rem(28);
+      line-height: calc(42 / 28);
+    }
+  }
+}
+
+.c-title02 {
+  position: relative;
+  font-family: $font-NotoSerif;
+  font-size: rem(32);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .08em;
+  text-align: center;
+  margin-bottom: rem(87);
+  &::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: rem(-44);
+    left: 50%;
+    transform: translateX(-50%);
+    width: rem(50);
+    height: rem(3);
+    background: #333333;
+  }
+}

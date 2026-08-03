@@ -1,0 +1,117 @@
+/*変数設定用*/
+
+@mixin sp {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+@mixin tab {
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+        @content;
+    }
+}
+@mixin pc {
+    @media screen and (min-width: 768px) {
+        @content;
+    }
+}
+
+$maincolor: #002647;
+// $subcolor: #000;
+
+$en_font: "Oswald", sans-serif;
+
+.vpc {
+    @include pc {
+        display: block;
+    }
+    @include sp {
+        display: none;
+    }
+}
+
+.vsp {
+    @include pc {
+        display: none;
+    }
+    @include sp {
+        display: block;
+    }
+}
+
+// デフォルトのボタンスタイル
+@mixin link-btn($bgColor:$maincolor, $color:#fff, $borderColor:$maincolor ,$path:url(../img/common/icon_arrow_white.png)) {
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    max-width: 398px;
+    width: 100%;
+    height: 72px;
+    background-color: $bgColor;
+    color: $color;
+    border: 1px solid $borderColor;
+    border-radius: 36px;
+    position: relative;
+    &::before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        background-image: $path;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 31px;
+        height: 31px;
+        position: absolute;
+        top: 50%;
+        right: 32px;
+        transform: translateY(-50%);
+        transition: all 0.3s ease;
+    }
+    &:hover {
+        opacity: 1;
+        &::before {
+            right: 20px;
+        }
+    }
+}
+
+// 矢印アイコンのmixin
+
+@mixin link-icon-arrow($path:url(./img/common/icon_arrow_white.png)) { //引数に画像のパスを渡す。
+    position: relative;
+    &::after {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        background-image: $path;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 31px;
+        height: 31px;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        transition: all 0.3s ease;
+    }
+}
+
+@mixin square-content($bgColor:#e6edf5) {
+    &::before {
+        content: "";
+        display: block;
+        background-color: $bgColor;
+        width: 100%;
+        height: 0;
+        transition: all 1.3s ease;
+    }
+    &.move_on {
+        &::before {
+            height: 100%;
+        }
+    }
+}
+
+// 共通部分スタイルここまで=========

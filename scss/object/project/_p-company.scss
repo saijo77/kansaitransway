@@ -1,0 +1,232 @@
+@use "../../global" as *;
+.p-company {
+  width: 100%;
+  &__inner {
+    width: 100%;
+    max-width: rem(1200);
+    margin: 0 auto;
+    padding-bottom: rem(130);
+    @include mq(md) {
+      padding: 0 rem(30) rem(80) rem(30);
+    }
+  }
+  &__table {
+    width: 100%;
+    margin-bottom: rem(110);
+    @include mq(md) {
+      margin-bottom: rem(60);
+    }
+    &_mb0 {
+      margin-bottom: 0;
+    }
+    tbody {
+      border: 1px solid #CCCCCC;
+      border-bottom: none;
+      background: linear-gradient(90deg, #F1F4F8 0%, #F1F4F8 rem(351), #ffffff rem(351), #ffffff 100%);
+      @include mq(md) {
+        background: none;
+        border-top: none;
+        border-bottom: 1px solid #CCCCCC;
+      }
+    }
+    tr {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #CCCCCC;
+      @include mq(md) {
+        flex-wrap: wrap;
+        border-bottom: none;
+      }
+    }
+    th {
+      width: rem(351);
+      font-size: rem(16);
+      font-weight: 400;
+      line-height: calc(24 / 16);
+      letter-spacing: .05em;
+      padding: rem(0) rem(30);
+      @include mq(md) {
+        width: 100%;
+        font-size: rem(14);
+        background: #F1F4F8;
+        text-align: center;
+        padding: rem(8) 0;
+        border-top: 1px solid #CCCCCC;
+        border-bottom: 1px solid #CCCCCC;
+      }
+    }
+    td {
+      width: calc(100% - rem(351));
+      font-size: rem(14);
+      font-weight: 400;
+      line-height: calc(20 / 14);
+      letter-spacing: .05em;
+      padding: rem(20) rem(40);
+      border-left: 1px solid #CCCCCC;
+      @include mq(md) {
+        width: 100%;
+        padding: rem(15) rem(10);
+        border-left: none;
+      }
+    }
+  }
+  &__title {
+    color: #005CAB;
+    font-size: rem(36);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .05em;
+    margin-bottom: rem(50);
+    @include mq(md) {
+      font-size: rem(24);
+      margin-bottom: rem(30);
+    }
+  }
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #CCCCCC;
+    background: linear-gradient(90deg, #F1F4F8 0%, #F1F4F8 rem(351), #ffffff rem(351), #ffffff 100%);
+    @include mq(md) {
+      flex-wrap: wrap;
+      background: none;
+      border-top: none;
+      border-top: 1px solid #CCCCCC;
+      border-bottom: 1px solid #CCCCCC;
+    }
+  }
+  &__wrapper02 {
+    display: flex;
+    align-items: center;
+    border: 1px solid #CCCCCC;
+    border-top: none;
+    background: linear-gradient(90deg, #fff 0%, #fff rem(351), #ffffff rem(351), #ffffff 100%);
+    margin-bottom: rem(110);
+    @include mq(md) {
+      flex-wrap: wrap;
+      background: none;
+      border-bottom: 1px solid #CCCCCC;
+      margin-bottom: rem(60);
+    }
+  }
+  &__leftBox {
+    width: rem(351);
+    font-size: rem(16);
+    font-weight: 400;
+    line-height: calc(24 / 16);
+    letter-spacing: .05em;
+    padding: rem(0) rem(30);
+    @include mq(md) {
+      width: 100%;
+      font-size: rem(14);
+      padding: rem(8) rem(10);
+      background: #F1F4F8;
+      border-bottom: 1px solid #CCCCCC;
+    }
+  }
+  &__rightBox {
+    width: calc(100% - rem(351));
+    font-size: rem(14);
+    font-weight: 400;
+    line-height: calc(20 / 14);
+    letter-spacing: .05em;
+    border-left: 1px solid #CCCCCC;
+    @include mq(md) {
+      width: 100%;
+      padding: 0;
+      border-left: none;
+    }
+  }
+  &__box {
+    display: flex;
+    border-bottom: 1px solid #CCCCCC;
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+  &__text {
+    width: rem(634);
+    padding: rem(20) rem(40);
+    border-right: 1px solid #CCCCCC;
+    @include mq(md) {
+      width: rem(250);
+      padding: rem(15) rem(10);
+    }
+  }
+  &__text02 {
+    width: calc(100% - rem(634));
+    text-align: right;
+    padding: rem(20) rem(30);
+    @include mq(md) {
+      width: calc(100% - rem(250));
+      padding: rem(15) rem(10);
+    }
+  }
+  &__text03 {
+    width: 100%;
+    text-align: right;
+    padding: rem(20) rem(30);
+    @include mq(md) {
+      padding: rem(15) rem(10);
+    }
+  }
+}
+
+.p-company-access {
+  width: 100%;
+  background: #F1F4F8;
+  &__inner {
+    width: 100%;
+    max-width: rem(1200);
+    margin: 0 auto;
+    padding: rem(105) 0 rem(120) 0;
+    @include mq(md) {
+      padding: rem(80) rem(30);
+    }
+  }
+  &__box {
+    display: flex;
+    align-items: center;
+    gap: rem(45);
+    margin-bottom: rem(50);
+    @include mq(md) {
+      flex-wrap: wrap;
+      gap: rem(30);
+    }
+  }
+  &__title {
+    color: #005CAB;
+    font-size: rem(36);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .05em;
+    @include mq(md) {
+      font-size: rem(24);
+    }
+  }
+  &__text {
+    font-size: rem(16);
+    line-height: 1;
+    letter-spacing: .05em;
+  }
+  &__map {
+    position: relative;
+    width: 100%;
+    height: rem(500);
+    border-radius: rem(250);
+    overflow: hidden;
+    @include mq(md) {
+      height: rem(242);
+      border-radius: rem(15);
+    }
+    iframe {
+      width: 100%;
+      height: rem(850);
+      margin-top: rem(-200);
+      @include mq(md) {
+        height: rem(242);
+        margin-top: rem(-0);
+      }
+    }
+  }
+}

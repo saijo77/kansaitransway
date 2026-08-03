@@ -1,0 +1,333 @@
+@use "../../global" as *;
+.p-seller {
+  width: 100%;
+  &__inner {
+    width: 100%;
+    max-width: rem(880);
+    margin: 0 auto;
+    padding: rem(100) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: rem(60);
+  }
+  &__leftBox {
+    width: 100%;
+  }
+  &__rightBox {
+    width: rem(567);
+    text-align: center;
+    flex-shrink: 0;
+  }
+  &__area {
+    font-family: $font-NotoSerif;
+    font-size: rem(28);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .08em;
+    margin-bottom: rem(11);
+  }
+}
+
+.p-seller-transaction {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  &:first-of-type {
+    margin-bottom: rem(57);
+  }
+  &__title {
+    font-family: $font-NotoSerif;
+    font-size: rem(28);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .08em;
+    margin-bottom: rem(30);
+  }
+  &__subject {
+    font-family: $font-NotoSerif;
+    font-size: rem(21);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .08em;
+    span {
+      font-family: $font-Cinzel;
+      font-size: rem(72);
+      line-height: 1;
+      letter-spacing: 0em;
+    }
+  }
+  &__comment {
+    font-size: rem(11);
+    line-height: 1;
+    letter-spacing: .08em;
+    margin-top: rem(10);
+  }
+}
+
+.p-seller-estate {
+  width: 100%;
+  margin-bottom: rem(100);
+  &__inner {
+    width: 100%;
+    max-width: rem(1000);
+    margin: 0 auto;
+    padding: rem(40);
+    display: flex;
+    justify-content: space-between;
+    border: rem(1) solid #CCCCCC;
+  }
+  &__title {
+    font-size: rem(24);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: .08em;
+  }
+  &__wrapper {
+    width: 100%;
+    max-width: rem(680);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(40);
+  }
+  &__box {
+
+  }
+  &__bigText {
+    position: relative;
+    font-size: rem(16);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .08em;
+    padding: rem(10) 0 rem(10) rem(38);
+    border-bottom: rem(1) solid #333333;
+    margin-bottom: rem(7);
+    &::before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      width: rem(28);
+      height: rem(28);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    &_icon {
+      &::before {
+        background-image: url(../imgs/seller_icon.png);
+      }
+    }
+    &_icon02 {
+      &::before {
+        background-image: url(../imgs/seller_icon02.png);
+      }
+    }
+    &_icon03 {
+      &::before {
+        background-image: url(../imgs/seller_icon03.png);
+      }
+    }
+    &_icon04 {
+      &::before {
+        background-image: url(../imgs/seller_icon04.png);
+      }
+    }
+  }
+  &__text {
+    font-size: rem(16);
+    line-height: 1.6875;
+    letter-spacing: .08em;
+  }
+}
+
+.p-seller-achieve {
+  width: 100%;
+  &__inner {
+    width: 100%;
+    max-width: rem(1000);
+    margin: 0 auto;
+    padding-bottom: rem(70);
+  }
+  &__title {
+    position: relative;
+    font-family: $font-NotoSerif;
+    font-size: rem(28);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .08em;
+    text-align: center;
+    &::after {
+      content: '';
+      display: block;
+      position: relative;
+      width: rem(50);
+      height: rem(3);
+      background: #333333;
+      margin: rem(35) auto rem(40) auto;
+    }
+  }
+  &__lists {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(40);
+  }
+  &__link {
+    position: relative;
+  }
+  &__thumbnail {
+    position: relative;
+    z-index: 1;
+    &::before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #EEEEEE00, #282828D4 90%, #000000);
+      opacity: .5;
+      z-index: 2;
+    }
+  }
+  &__category {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    color: #ffffff;
+    font-size: rem(16);
+    line-height: 1.5;
+    letter-spacing: .08em;
+    padding: rem(5) rem(10);
+    background: #333333;
+    z-index: 2;
+  }
+  &__articleTitle {
+    position: absolute;
+    bottom: rem(21);
+    left: rem(20);
+    display: inline-block;
+    color: #ffffff;
+    font-size: rem(18);
+    line-height: 1.5;
+    letter-spacing: .08em;
+    z-index: 2;
+  }
+}
+
+.p-seller-single {
+  width: 100%;
+  &__inner {
+    width: 100%;
+    max-width: rem(1000);
+    margin: 0 auto;
+    padding-bottom: rem(70);
+  }
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: rem(50);
+  }
+  &__thumbnail {
+    width: 100%;
+    max-width: rem(560);
+    flex-shrink: 0;
+  }
+  &__box {
+    width: 100%;
+    max-width: rem(400);
+    padding-top: rem(10);
+  }
+  &__title {
+    font-size: rem(24);
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: .08em;
+    margin-bottom: rem(21);
+  }
+  &__table {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: rem(10);
+    dt {
+      width: 100%;
+      max-width: rem(85);
+      font-size: rem(16);
+      font-weight: 500;
+      line-height: 1.6875;
+      letter-spacing: .08em;
+    }
+    dd {
+      width: 100%;
+      max-width: calc(100% - rem(85));
+      font-size: rem(16);
+      font-weight: 500;
+      line-height: 1.6875;
+      letter-spacing: .08em;
+    }
+  }
+  &__content {
+    margin-top: rem(20);
+    p {
+      font-size: rem(16);
+      font-weight: 500;
+      line-height: 1.6875;
+      letter-spacing: .08em;
+    }
+  }
+}
+
+.p-seller-item {
+  width: 100%;
+  padding: rem(40);
+  border: rem(1) solid #CCCCCC;
+  display: flex;
+  gap: rem(50);
+  margin-bottom: rem(70);
+  &__title {
+    font-family: $font-NotoSerif;
+    font-size: rem(24);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .08em;
+  }
+  &__box {
+    width: 100%;
+    max-width: rem(200);
+  }
+  &__box02 {
+    width: 100%;
+    max-width: rem(310);
+  }
+  &__company {
+    font-size: rem(18);
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: .08em;
+    margin-bottom: rem(11);
+  }
+  &__access {
+    font-size: rem(14);
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: .08em;
+    margin-bottom: rem(10);
+  }
+  &__time {
+    font-size: rem(14);
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: .08em;
+  }
+  &__tel {
+    font-family: $font-Cinzel;
+    font-size: rem(28);
+    line-height: 1;
+    letter-spacing: .08em;
+    margin-bottom: rem(40);
+  }
+}
