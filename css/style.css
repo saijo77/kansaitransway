@@ -9159,6 +9159,609 @@ body.page-template-page-organization main {
   font-family: "Zen Maru Gothic", serif !important;
 }
 
+.p-thoughts {
+  width: 100%;
+  color: #1d1d1f;
+  font-family: "Zen Maru Gothic", serif;
+  letter-spacing: 0.04em;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.p-thoughts-section-label {
+  margin: 0 0 1.5rem;
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #005cab;
+}
+
+.p-thoughts-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-align: center;
+}
+.p-thoughts-hero__media {
+  position: absolute;
+  inset: 0;
+}
+.p-thoughts-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.p-thoughts-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 42, 90, 0.55) 0%, rgba(0, 42, 90, 0.72) 100%);
+}
+.p-thoughts-hero__content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 68.75rem);
+  padding: 8.75rem 2.5rem 6.25rem;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-hero__content {
+    padding: 7.5rem 1.5rem 5rem;
+  }
+}
+.p-thoughts-hero__eyebrow {
+  margin: 0 0 1.75rem;
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+.p-thoughts-hero__catch {
+  margin: 0 0 1.75rem;
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(2.4rem, 6vw, 5.2rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.08em;
+}
+.p-thoughts-hero__sub {
+  margin: 0 0 3rem;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+}
+.p-thoughts-hero__lead {
+  margin: 0 auto;
+  max-width: 47.5rem;
+  font-size: 1rem;
+  line-height: 2;
+  letter-spacing: 0.06em;
+  opacity: 0.95;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-hero__lead {
+    font-size: 0.875rem;
+    line-height: 1.9;
+  }
+}
+
+.p-thoughts-photo {
+  width: 100%;
+  margin: 0;
+  line-height: 0;
+}
+.p-thoughts-photo img {
+  display: block;
+  width: 100%;
+  height: clamp(280px, 48vw, 720px);
+  object-fit: cover;
+}
+.p-thoughts-photo--wide img {
+  height: clamp(240px, 36vw, 520px);
+}
+
+.p-thoughts-people {
+  padding: 10rem 0 7.5rem;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-people {
+    padding: 6.25rem 0 5rem;
+  }
+}
+.p-thoughts-people__intro {
+  width: min(100%, 57.5rem);
+  margin: 0 auto 6.25rem;
+  padding: 0 2.5rem;
+  text-align: center;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-people__intro {
+    margin-bottom: 4rem;
+    padding: 0 1.5rem;
+  }
+}
+.p-thoughts-people__title {
+  margin: 0 0 2rem;
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+}
+.p-thoughts-people__text {
+  margin: 0 0 3.5rem;
+  font-size: 1.0625rem;
+  line-height: 2;
+  color: #6e6e73;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-people__text {
+    margin-bottom: 2.5rem;
+    font-size: 0.9375rem;
+  }
+}
+.p-thoughts-people__slogan {
+  margin: 0;
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  color: #005cab;
+}
+.p-thoughts-people__visual {
+  width: min(100%, 87.5rem);
+  margin: 0 auto 7.5rem;
+  padding: 0 1.5rem;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-people__visual {
+    margin-bottom: 4.5rem;
+    padding: 0;
+  }
+}
+.p-thoughts-people__visual img {
+  display: block;
+  width: 100%;
+  height: clamp(280px, 42vw, 620px);
+  object-fit: cover;
+  border-radius: 1.5rem;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-people__visual img {
+    border-radius: 0;
+  }
+}
+
+.p-thoughts-pillars {
+  width: min(100%, 87.5rem);
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-pillars {
+    padding: 0 1.5rem;
+  }
+}
+.p-thoughts-pillars__lead {
+  max-width: 56.25rem;
+  margin: 0 auto 4.5rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 2;
+  color: #6e6e73;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-pillars__lead {
+    margin-bottom: 3rem;
+    font-size: 0.875rem;
+  }
+}
+.p-thoughts-pillars__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+@media screen and (max-width: 1024px) {
+  .p-thoughts-pillars__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+.p-thoughts-pillars__card {
+  padding: 3rem 2.25rem;
+  background: #f5f7fa;
+  border-radius: 1.5rem;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-pillars__card {
+    padding: 2.25rem 1.75rem;
+  }
+}
+.p-thoughts-pillars__card:hover {
+  transform: translateY(-0.375rem);
+  box-shadow: 0 1.125rem 2.5rem rgba(0, 0, 0, 0.08);
+}
+.p-thoughts-pillars__num {
+  margin: 0 0 1.25rem;
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.2em;
+  color: #005cab;
+}
+.p-thoughts-pillars__name {
+  margin: 0 0 1.5rem;
+  font-family: "Noto Serif JP", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  line-height: 1.3;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-pillars__name {
+    font-size: 1.75rem;
+  }
+}
+.p-thoughts-pillars__body {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.95;
+  color: #333;
+}
+
+.p-thoughts-colors {
+  padding: 8.75rem 0 7.5rem;
+  background: #fafafa;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-colors {
+    padding: 5.625rem 0 5rem;
+  }
+}
+.p-thoughts-colors__intro {
+  width: min(100%, 68.75rem);
+  margin: 0 auto 5rem;
+  padding: 0 2.5rem;
+  text-align: center;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-colors__intro {
+    margin-bottom: 3.5rem;
+    padding: 0 1.5rem;
+  }
+}
+.p-thoughts-colors__title {
+  margin: 0 0 3rem;
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+.p-thoughts-colors__logo {
+  width: min(100%, 65rem);
+  margin: 0 auto 3.5rem;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-colors__logo {
+    margin-bottom: 2.5rem;
+  }
+}
+.p-thoughts-colors__logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1.25rem;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-colors__logo img {
+    border-radius: 0.75rem;
+  }
+}
+.p-thoughts-colors__text {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 2;
+  color: #6e6e73;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-colors__text {
+    font-size: 0.875rem;
+  }
+}
+.p-thoughts-colors__palette {
+  width: min(100%, 92.5rem);
+  margin: 0 auto 6.25rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+@media screen and (max-width: 1024px) {
+  .p-thoughts-colors__palette {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-colors__palette {
+    margin-bottom: 4rem;
+    padding: 0 1.5rem;
+  }
+}
+.p-thoughts-colors__block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 22.5rem;
+  padding: 3rem 2.25rem;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  color: #ffffff;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-colors__block {
+    min-height: 0;
+    padding: 2.5rem 1.75rem;
+    border-radius: 1rem;
+  }
+}
+.p-thoughts-colors__block--blue {
+  background: linear-gradient(160deg, #004a8f 0%, #005cab 55%, #3f84c4 100%);
+}
+.p-thoughts-colors__block--green {
+  background: linear-gradient(160deg, #1f6b4f 0%, #2f8f6b 55%, #55ad86 100%);
+}
+.p-thoughts-colors__block--orange {
+  background: linear-gradient(160deg, #c35d18 0%, #e07a2f 55%, #f0a05a 100%);
+}
+.p-thoughts-colors__tag {
+  margin: 0 0 0.625rem;
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.8125rem;
+  letter-spacing: 0.24em;
+}
+.p-thoughts-colors__keyword {
+  margin: 0 0 1.5rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.16em;
+  opacity: 0.9;
+}
+.p-thoughts-colors__heading {
+  margin: 0 0 1.5rem;
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(1.25rem, 1.8vw, 1.7rem);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0.06em;
+}
+.p-thoughts-colors__desc {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  opacity: 0.95;
+}
+.p-thoughts-colors__bridge {
+  margin: 0 auto;
+  max-width: 50rem;
+  padding: 0 1.5rem;
+  text-align: center;
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+  color: #1d1d1f;
+}
+
+.p-thoughts-mission {
+  padding: 10rem 0 7.5rem;
+  background: #ffffff;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-mission {
+    padding: 6.25rem 0 5rem;
+  }
+}
+.p-thoughts-mission__inner {
+  width: min(100%, 68.75rem);
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  text-align: center;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-mission__inner {
+    padding: 0 1.5rem;
+  }
+}
+.p-thoughts-mission__title {
+  margin: 0 0 4.5rem;
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-mission__title {
+    margin-bottom: 3rem;
+  }
+}
+.p-thoughts-mission__box-label {
+  margin: 0 0 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #005cab;
+}
+.p-thoughts-mission__mission {
+  margin-bottom: 4.5rem;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-mission__mission {
+    margin-bottom: 3rem;
+  }
+}
+.p-thoughts-mission__mission-label {
+  margin: 0 0 1.75rem;
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #1d1d1f;
+}
+.p-thoughts-mission__mission-text {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 2.1;
+  letter-spacing: 0.05em;
+  color: #6e6e73;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-mission__mission-text {
+    font-size: 0.9375rem;
+  }
+}
+.p-thoughts-mission__box-text {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 2;
+  letter-spacing: 0.05em;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-mission__box-text {
+    font-size: 0.9375rem;
+  }
+}
+.p-thoughts-mission__philosophy {
+  margin-bottom: 2.5rem;
+  padding: 4.5rem 3rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(160deg, rgba(0, 42, 90, 0.88), rgba(0, 92, 171, 0.82)), url("../img/archive/LogisticsCenter01_img06.png") center/cover no-repeat;
+  color: #ffffff;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-mission__philosophy {
+    padding: 3rem 1.5rem;
+  }
+}
+.p-thoughts-mission__philosophy .p-thoughts-mission__box-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+.p-thoughts-mission__philosophy-text {
+  margin: 0;
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.25rem;
+  line-height: 2.05;
+  letter-spacing: 0.06em;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-mission__philosophy-text {
+    font-size: 1rem;
+  }
+}
+
+.p-thoughts-guidelines {
+  padding: 3rem 2.5rem;
+  border-radius: 1.5rem;
+  background: #f5f7fa;
+  text-align: left;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-guidelines {
+    padding: 2.25rem 1.5rem;
+  }
+}
+.p-thoughts-guidelines .p-thoughts-mission__box-label {
+  text-align: center;
+}
+.p-thoughts-guidelines__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+.p-thoughts-guidelines__item {
+  position: relative;
+  padding: 1.5rem 1.75rem 1.5rem 3rem;
+  border-radius: 1rem;
+  background: #ffffff;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-guidelines__item {
+    font-size: 0.875rem;
+    padding: 1.25rem 1.25rem 1.25rem 2.5rem;
+  }
+}
+.p-thoughts-guidelines__item::before {
+  content: "";
+  position: absolute;
+  left: 1.375rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #e07a2f;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-guidelines__item::before {
+    left: 1rem;
+  }
+}
+
+.p-thoughts-closing {
+  position: relative;
+  min-height: 35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-closing {
+    min-height: 26.25rem;
+  }
+}
+.p-thoughts-closing__media {
+  position: absolute;
+  inset: 0;
+  background: #003a6e;
+}
+.p-thoughts-closing__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.28;
+}
+.p-thoughts-closing__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 42, 90, 0.55), rgba(0, 42, 90, 0.78));
+}
+.p-thoughts-closing__message {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 5rem 1.5rem;
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+}
+
 @media screen and (max-width: 767px) {
   .u-change_pc {
     display: none !important;

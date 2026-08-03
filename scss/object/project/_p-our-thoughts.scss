@@ -1,0 +1,655 @@
+@use "../../global" as *;
+
+$thoughts-blue: #005cab;
+$thoughts-green: #2f8f6b;
+$thoughts-orange: #e07a2f;
+$thoughts-text: #1d1d1f;
+$thoughts-muted: #6e6e73;
+
+.p-thoughts {
+  width: 100%;
+  color: $thoughts-text;
+  font-family: $font-main;
+  letter-spacing: 0.04em;
+  background: $white;
+  overflow: hidden;
+}
+
+.p-thoughts-section-label {
+  margin: 0 0 rem(24);
+  font-family: $font-NotoSerif;
+  font-size: rem(14);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $thoughts-blue;
+}
+
+// ----------------------------------------
+// 1. HERO
+// ----------------------------------------
+.p-thoughts-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  text-align: center;
+
+  &__media {
+    position: absolute;
+    inset: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0, 42, 90, 0.55) 0%, rgba(0, 42, 90, 0.72) 100%);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    width: min(100%, rem(1100));
+    padding: rem(140) rem(40) rem(100);
+
+    @include mq(md) {
+      padding: rem(120) rem(24) rem(80);
+    }
+  }
+
+  &__eyebrow {
+    margin: 0 0 rem(28);
+    font-family: $font-NotoSerif;
+    font-size: rem(14);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  &__catch {
+    margin: 0 0 rem(28);
+    font-family: $font-NotoSerif;
+    font-size: clamp(2.4rem, 6vw, 5.2rem);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+  }
+
+  &__sub {
+    margin: 0 0 rem(48);
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: 0.08em;
+  }
+
+  &__lead {
+    margin: 0 auto;
+    max-width: rem(760);
+    font-size: rem(16);
+    line-height: 2;
+    letter-spacing: 0.06em;
+    opacity: 0.95;
+
+    @include mq(md) {
+      font-size: rem(14);
+      line-height: 1.9;
+    }
+  }
+}
+
+// ----------------------------------------
+// Photo breaks
+// ----------------------------------------
+.p-thoughts-photo {
+  width: 100%;
+  margin: 0;
+  line-height: 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: clamp(280px, 48vw, 720px);
+    object-fit: cover;
+  }
+
+  &--wide img {
+    height: clamp(240px, 36vw, 520px);
+  }
+}
+
+// ----------------------------------------
+// 2. PEOPLE & PILLARS
+// ----------------------------------------
+.p-thoughts-people {
+  padding: rem(160) 0 rem(120);
+
+  @include mq(md) {
+    padding: rem(100) 0 rem(80);
+  }
+
+  &__intro {
+    width: min(100%, rem(920));
+    margin: 0 auto rem(100);
+    padding: 0 rem(40);
+    text-align: center;
+
+    @include mq(md) {
+      margin-bottom: rem(64);
+      padding: 0 rem(24);
+    }
+  }
+
+  &__title {
+    margin: 0 0 rem(32);
+    font-family: $font-NotoSerif;
+    font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
+  }
+
+  &__text {
+    margin: 0 0 rem(56);
+    font-size: rem(17);
+    line-height: 2;
+    color: $thoughts-muted;
+
+    @include mq(md) {
+      margin-bottom: rem(40);
+      font-size: rem(15);
+    }
+  }
+
+  &__slogan {
+    margin: 0;
+    font-family: $font-NotoSerif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.06em;
+    color: $thoughts-blue;
+  }
+
+  &__visual {
+    width: min(100%, rem(1400));
+    margin: 0 auto rem(120);
+    padding: 0 rem(24);
+
+    @include mq(md) {
+      margin-bottom: rem(72);
+      padding: 0;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: clamp(280px, 42vw, 620px);
+      object-fit: cover;
+      border-radius: rem(24);
+
+      @include mq(md) {
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+.p-thoughts-pillars {
+  width: min(100%, rem(1400));
+  margin: 0 auto;
+  padding: 0 rem(40);
+
+  @include mq(md) {
+    padding: 0 rem(24);
+  }
+
+  &__lead {
+    max-width: rem(900);
+    margin: 0 auto rem(72);
+    text-align: center;
+    font-size: rem(16);
+    line-height: 2;
+    color: $thoughts-muted;
+
+    @include mq(md) {
+      margin-bottom: rem(48);
+      font-size: rem(14);
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: rem(28);
+
+    @include mq(lg) {
+      grid-template-columns: 1fr;
+      gap: rem(20);
+    }
+  }
+
+  &__card {
+    padding: rem(48) rem(36);
+    background: #f5f7fa;
+    border-radius: rem(24);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+    @include mq(md) {
+      padding: rem(36) rem(28);
+    }
+
+    &:hover {
+      transform: translateY(rem(-6));
+      box-shadow: 0 rem(18) rem(40) rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &__num {
+    margin: 0 0 rem(20);
+    font-family: $font-NotoSerif;
+    font-size: rem(14);
+    letter-spacing: 0.2em;
+    color: $thoughts-blue;
+  }
+
+  &__name {
+    margin: 0 0 rem(24);
+    font-family: $font-NotoSerif;
+    font-size: rem(32);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    line-height: 1.3;
+
+    @include mq(md) {
+      font-size: rem(28);
+    }
+  }
+
+  &__body {
+    margin: 0;
+    font-size: rem(15);
+    line-height: 1.95;
+    color: #333;
+  }
+}
+
+// ----------------------------------------
+// 3. COLORS
+// ----------------------------------------
+.p-thoughts-colors {
+  padding: rem(140) 0 rem(120);
+  background: #fafafa;
+
+  @include mq(md) {
+    padding: rem(90) 0 rem(80);
+  }
+
+  &__intro {
+    width: min(100%, rem(1100));
+    margin: 0 auto rem(80);
+    padding: 0 rem(40);
+    text-align: center;
+
+    @include mq(md) {
+      margin-bottom: rem(56);
+      padding: 0 rem(24);
+    }
+  }
+
+  &__title {
+    margin: 0 0 rem(48);
+    font-family: $font-NotoSerif;
+    font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+
+  &__logo {
+    width: min(100%, rem(1040));
+    margin: 0 auto rem(56);
+
+    @include mq(md) {
+      margin-bottom: rem(40);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: rem(20);
+
+      @include mq(md) {
+        border-radius: rem(12);
+      }
+    }
+  }
+
+  &__text {
+    margin: 0;
+    font-size: rem(16);
+    line-height: 2;
+    color: $thoughts-muted;
+
+    @include mq(md) {
+      font-size: rem(14);
+    }
+  }
+
+  &__palette {
+    width: min(100%, rem(1480));
+    margin: 0 auto rem(100);
+    padding: 0 rem(24);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: rem(24);
+
+    @include mq(lg) {
+      grid-template-columns: 1fr;
+      gap: rem(16);
+    }
+
+    @include mq(md) {
+      margin-bottom: rem(64);
+      padding: 0 rem(24);
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: rem(360);
+    padding: rem(48) rem(36);
+    overflow: hidden;
+    border-radius: rem(24);
+    color: $white;
+
+    @include mq(md) {
+      min-height: 0;
+      padding: rem(40) rem(28);
+      border-radius: rem(16);
+    }
+
+    &--blue {
+      background: linear-gradient(160deg, #004a8f 0%, $thoughts-blue 55%, #3f84c4 100%);
+    }
+
+    &--green {
+      background: linear-gradient(160deg, #1f6b4f 0%, $thoughts-green 55%, #55ad86 100%);
+    }
+
+    &--orange {
+      background: linear-gradient(160deg, #c35d18 0%, $thoughts-orange 55%, #f0a05a 100%);
+    }
+  }
+
+  &__tag {
+    margin: 0 0 rem(10);
+    font-family: $font-NotoSerif;
+    font-size: rem(13);
+    letter-spacing: 0.24em;
+  }
+
+  &__keyword {
+    margin: 0 0 rem(24);
+    font-size: rem(14);
+    letter-spacing: 0.16em;
+    opacity: 0.9;
+  }
+
+  &__heading {
+    margin: 0 0 rem(24);
+    font-family: $font-NotoSerif;
+    font-size: clamp(1.25rem, 1.8vw, 1.7rem);
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: 0.06em;
+  }
+
+  &__desc {
+    margin: 0;
+    font-size: rem(15);
+    line-height: 1.9;
+    opacity: 0.95;
+  }
+
+  &__bridge {
+    margin: 0 auto;
+    max-width: rem(800);
+    padding: 0 rem(24);
+    text-align: center;
+    font-family: $font-NotoSerif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: 0.08em;
+    color: $thoughts-text;
+  }
+}
+
+// ----------------------------------------
+// 4. MISSION
+// ----------------------------------------
+.p-thoughts-mission {
+  padding: rem(160) 0 rem(120);
+  background: $white;
+
+  @include mq(md) {
+    padding: rem(100) 0 rem(80);
+  }
+
+  &__inner {
+    width: min(100%, rem(1100));
+    margin: 0 auto;
+    padding: 0 rem(40);
+    text-align: center;
+
+    @include mq(md) {
+      padding: 0 rem(24);
+    }
+  }
+
+  &__title {
+    margin: 0 0 rem(72);
+    font-family: $font-NotoSerif;
+    font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+
+    @include mq(md) {
+      margin-bottom: rem(48);
+    }
+  }
+
+  &__box-label {
+    margin: 0 0 rem(20);
+    font-size: rem(13);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: $thoughts-blue;
+  }
+
+  &__mission {
+    margin-bottom: rem(72);
+
+    @include mq(md) {
+      margin-bottom: rem(48);
+    }
+  }
+
+  &__mission-label {
+    margin: 0 0 rem(28);
+    font-family: $font-NotoSerif;
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: $thoughts-text;
+  }
+
+  &__mission-text {
+    margin: 0;
+    font-size: rem(18);
+    line-height: 2.1;
+    letter-spacing: 0.05em;
+    color: $thoughts-muted;
+
+    @include mq(md) {
+      font-size: rem(15);
+    }
+  }
+
+  &__box-text {
+    margin: 0;
+    font-size: rem(18);
+    line-height: 2;
+    letter-spacing: 0.05em;
+
+    @include mq(md) {
+      font-size: rem(15);
+    }
+  }
+
+  &__philosophy {
+    margin-bottom: rem(40);
+    padding: rem(72) rem(48);
+    border-radius: rem(24);
+    background:
+      linear-gradient(160deg, rgba(0, 42, 90, 0.88), rgba(0, 92, 171, 0.82)),
+      url('../img/archive/LogisticsCenter01_img06.png') center / cover no-repeat;
+    color: $white;
+
+    @include mq(md) {
+      padding: rem(48) rem(24);
+    }
+
+    .p-thoughts-mission__box-label {
+      color: rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  &__philosophy-text {
+    margin: 0;
+    font-family: $font-NotoSerif;
+    font-size: rem(20);
+    line-height: 2.05;
+    letter-spacing: 0.06em;
+
+    @include mq(md) {
+      font-size: rem(16);
+    }
+  }
+}
+
+.p-thoughts-guidelines {
+  padding: rem(48) rem(40);
+  border-radius: rem(24);
+  background: #f5f7fa;
+  text-align: left;
+
+  @include mq(md) {
+    padding: rem(36) rem(24);
+  }
+
+  .p-thoughts-mission__box-label {
+    text-align: center;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: rem(16);
+  }
+
+  &__item {
+    position: relative;
+    padding: rem(24) rem(28) rem(24) rem(48);
+    border-radius: rem(16);
+    background: $white;
+    font-size: rem(16);
+    line-height: 1.8;
+
+    @include mq(md) {
+      font-size: rem(14);
+      padding: rem(20) rem(20) rem(20) rem(40);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: rem(22);
+      top: 50%;
+      transform: translateY(-50%);
+      width: rem(8);
+      height: rem(8);
+      border-radius: 50%;
+      background: $thoughts-orange;
+
+      @include mq(md) {
+        left: rem(16);
+      }
+    }
+  }
+}
+
+// ----------------------------------------
+// 5. CLOSING
+// ----------------------------------------
+.p-thoughts-closing {
+  position: relative;
+  min-height: rem(560);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: $white;
+  overflow: hidden;
+
+  @include mq(md) {
+    min-height: rem(420);
+  }
+
+  &__media {
+    position: absolute;
+    inset: 0;
+    background: #003a6e;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.28;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 42, 90, 0.55), rgba(0, 42, 90, 0.78));
+    }
+  }
+
+  &__message {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: rem(80) rem(24);
+    font-family: $font-NotoSerif;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    line-height: 1.5;
+  }
+}
