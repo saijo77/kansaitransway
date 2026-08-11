@@ -44,11 +44,6 @@
 
     <section>
         <div class="p-front-about" id="01">
-			<div class="p-front-about_banner">
-				<a href="https://kansaitransway.co.jp/30th">
-					<img src="<?php echo get_template_directory_uri(); ?>/img/top/2505-30.png" alt="関西トランスウェイ30周年"/>
-				</a>
-			</div>
             <div class="p-front-about__inner">
                 <div class="p-front-about__img will-fadeIn">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/top/img_top.png" alt="">
@@ -293,6 +288,11 @@
                 </a>
                 <a class="p-front-banner__link will-fadeIn" href="https://www.youtube.com/watch?v=A2NjzWcxhZg" target="_blank">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/common/banner04.png" alt="">
+                </a>
+            </div>
+            <div class="p-front-banner__anniversary will-fadeIn">
+                <a href="https://kansaitransway.co.jp/30th">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/top/2505-30.png" alt="関西トランスウェイ30周年">
                 </a>
             </div>
         </div>

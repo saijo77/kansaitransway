@@ -244,6 +244,7 @@ $thoughts-muted: #6e6e73;
     background: #f5f7fa;
     border-radius: rem(24);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
+    color: #333;
 
     @include mq(md) {
       padding: rem(36) rem(28);
@@ -252,6 +253,36 @@ $thoughts-muted: #6e6e73;
     &:hover {
       transform: translateY(rem(-6));
       box-shadow: 0 rem(18) rem(40) rgba(0, 0, 0, 0.08);
+    }
+
+    &--green {
+      background: linear-gradient(160deg, #1f6b4f 0%, $thoughts-green 55%, #55ad86 100%);
+      color: $white;
+
+      .p-thoughts-pillars__name,
+      .p-thoughts-pillars__body {
+        color: $white;
+      }
+    }
+
+    &--blue {
+      background: linear-gradient(160deg, #004a8f 0%, $thoughts-blue 55%, #3f84c4 100%);
+      color: $white;
+
+      .p-thoughts-pillars__name,
+      .p-thoughts-pillars__body {
+        color: $white;
+      }
+    }
+
+    &--orange {
+      background: linear-gradient(160deg, #c35d18 0%, $thoughts-orange 55%, #f0a05a 100%);
+      color: $white;
+
+      .p-thoughts-pillars__name,
+      .p-thoughts-pillars__body {
+        color: $white;
+      }
     }
   }
 
@@ -562,7 +593,13 @@ $thoughts-muted: #6e6e73;
   }
 
   .p-thoughts-mission__box-label {
+    margin-bottom: rem(28);
     text-align: center;
+    font-family: $font-NotoSerif;
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: $thoughts-text;
   }
 
   &__list {
@@ -574,32 +611,16 @@ $thoughts-muted: #6e6e73;
   }
 
   &__item {
-    position: relative;
-    padding: rem(24) rem(28) rem(24) rem(48);
+    padding: rem(24) rem(28);
     border-radius: rem(16);
     background: $white;
     font-size: rem(16);
     line-height: 1.8;
+    text-align: center;
 
     @include mq(md) {
       font-size: rem(14);
-      padding: rem(20) rem(20) rem(20) rem(40);
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: rem(22);
-      top: 50%;
-      transform: translateY(-50%);
-      width: rem(8);
-      height: rem(8);
-      border-radius: 50%;
-      background: $thoughts-orange;
-
-      @include mq(md) {
-        left: rem(16);
-      }
+      padding: rem(20);
     }
   }
 }

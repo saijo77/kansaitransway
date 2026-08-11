@@ -68,21 +68,21 @@ $theme_uri = get_template_directory_uri();
       </p>
 
       <div class="p-thoughts-pillars__grid">
-        <article class="p-thoughts-pillars__card">
+        <article class="p-thoughts-pillars__card p-thoughts-pillars__card--green">
           <h3 class="p-thoughts-pillars__name">共　感</h3>
           <p class="p-thoughts-pillars__body">
             私たちは、社員一人ひとりの声に真摯に耳を傾け、想いや考えを理解し、気持ちに寄り添います。互いを思いやり、信頼し合う関係を築くことで、誰もが安心して自分らしく働ける環境をつくり続けます。
           </p>
         </article>
 
-        <article class="p-thoughts-pillars__card">
+        <article class="p-thoughts-pillars__card p-thoughts-pillars__card--blue">
           <h3 class="p-thoughts-pillars__name">共　創</h3>
           <p class="p-thoughts-pillars__body">
             私たちは、社員の想いと力を信じ、互いに知恵を重ね合いながら、誰もが挑戦できる環境を用意します。一人では生み出せない価値を共に創り出し、その経験を通じて、社員自身が成長と誇りを感じられる会社を目指します。
           </p>
         </article>
 
-        <article class="p-thoughts-pillars__card">
+        <article class="p-thoughts-pillars__card p-thoughts-pillars__card--orange">
           <h3 class="p-thoughts-pillars__name">共　栄</h3>
           <p class="p-thoughts-pillars__body">
             働くことを通じて成長し、得たものを家族や地域にも還元できるような、人生そのものが豊かになる会社を目指します。会社が栄えるだけでは不十分。社員と、社員の大切な人たちと、共に幸せになれることが、私たちの願いです。
