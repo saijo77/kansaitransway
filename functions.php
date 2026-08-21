@@ -15,9 +15,6 @@ remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'rel_canonical');
 remove_action('wp_head', 'recent_comments_style');
 
-//自動更新を無効にする
-add_filter('automatic_updater_disabled', '__return_true');
-
 // 管理画面　WP ロゴ削除
 function hide_admin_logo()
 {
