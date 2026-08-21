@@ -8,7 +8,16 @@
                 <h2 class="p-front__title">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/top/copy.png" alt="">
                 </h2>
-				<video id="myVideo" class="p-front__video" src="<?php echo get_template_directory_uri(); ?>/img/top/mv_movie.mp4" muted loop></video>
+				<div class="p-front__video">
+					<iframe
+						id="myVideo"
+						src="https://www.youtube.com/embed/Ah580gNGT0o?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=Ah580gNGT0o&amp;controls=0&amp;modestbranding=1&amp;playsinline=1&amp;rel=0&amp;enablejsapi=1"
+						title="YouTube video player"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin"
+						allowfullscreen
+					></iframe>
+				</div>
                 <a href="#01" class="scroll-button">
                     <img src="<?php echo get_template_directory_uri() ?>/img/top/icon-scroll.png" alt="">
                 </a>
@@ -28,6 +37,7 @@
 						position: absolute;
 						bottom: 20px;
 						right: 20px;
+						z-index: 2;
 						
 						background: rgba(255,255,255,0.5);
 						border-radius: 50%;
@@ -283,7 +293,7 @@
     <section>
         <div class="p-front-banner">
             <div class="p-front-banner__inner">
-                <a class="p-front-banner__link will-fadeIn" href="https://www.youtube.com/watch?v=bfy1tANSPqY" target="_blank">
+                <a class="p-front-banner__link will-fadeIn" href="https://youtu.be/HYTnB49POAY" target="_blank">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/common/banner05.png" alt="">
                 </a>
                 <a class="p-front-banner__link will-fadeIn" href="https://www.youtube.com/watch?v=A2NjzWcxhZg" target="_blank">
@@ -387,7 +397,31 @@
 </div>
 
 <script>
-	
+	var ytHeroPlayer = null;
+
+	window.onYouTubeIframeAPIReady = function () {
+		ytHeroPlayer = new YT.Player('myVideo', {
+			events: {
+				onReady: function (event) {
+					event.target.mute();
+					event.target.playVideo();
+				},
+				onStateChange: function (event) {
+					if (event.data === YT.PlayerState.ENDED) {
+						event.target.playVideo();
+					}
+				}
+			}
+		});
+	};
+
+	function playHeroVideo() {
+		if (ytHeroPlayer && typeof ytHeroPlayer.playVideo === 'function') {
+			ytHeroPlayer.mute();
+			ytHeroPlayer.playVideo();
+		}
+	}
+
     $(document).ready(function() {
         function showLoading() {
             // Kiểm tra xem trang đã được tải trước đó hay chưa
@@ -395,7 +429,7 @@
                 $('.p-front').css({
                     'opacity': '1',
                 });
-                document.getElementById('myVideo').play();
+                playHeroVideo();
                 return;
             }
 
@@ -426,8 +460,7 @@
                         $('.p-front').css({
                             'opacity': '1',
                         });
-						document.getElementById('myVideo').muted = true;
-                        document.getElementById('myVideo').play();
+                        playHeroVideo();
                         sessionStorage.setItem('isLoaded', 'true');
                     });
                 }
@@ -443,13 +476,18 @@
 		$('.is-soundOff').on('click', function () {
 			$('.is-soundOff').hide();
 			$('.is-soundOn').show();
-			document.getElementById('myVideo').muted = false;
+			if (ytHeroPlayer && typeof ytHeroPlayer.unMute === 'function') {
+				ytHeroPlayer.unMute();
+			}
 		});
 		
 		$('.is-soundOn').on('click', function () {
 			$('.is-soundOn').hide();
 			$('.is-soundOff').show();
-			document.getElementById('myVideo').muted = true;
+			if (ytHeroPlayer && typeof ytHeroPlayer.mute === 'function') {
+				ytHeroPlayer.mute();
+			}
 		});
 	});
 </script>
+<script src="https://www.youtube.com/iframe_api"></script>

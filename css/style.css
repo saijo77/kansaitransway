@@ -521,7 +521,7 @@ img {
   left: 0;
   width: 100%;
   max-width: 100%;
-  z-index: 10;
+  z-index: 100;
 }
 .l-header__inner {
   width: 100%;
@@ -2207,6 +2207,7 @@ body.is-hamburger-open {
   left: 50%;
   transform: translateX(-50%);
   bottom: 3.125rem;
+  z-index: 2;
   width: 4.75rem;
   height: 3rem;
   animation: sdb05 1.5s infinite;
@@ -2255,6 +2256,7 @@ body.is-hamburger-open {
   position: absolute;
   top: 1.875rem;
   left: 1.875rem;
+  z-index: 2;
   display: inline-block;
   width: 10rem;
 }
@@ -2267,21 +2269,40 @@ body.is-hamburger-open {
   width: 15.75rem;
 }
 .p-front__video {
+  position: relative;
+  z-index: 0;
   width: 100%;
   height: 43.75rem;
-  object-fit: cover;
-  object-position: center;
+  overflow: hidden;
+  background: #000;
+  isolation: isolate;
+}
+.p-front__video iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 56.25vw;
+  min-width: calc(43.75rem * 16 / 9);
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  border: 0;
+  pointer-events: none;
 }
 @media screen and (max-width: 767px) {
   .p-front__video {
     height: 15.625rem;
     border-radius: 0rem;
   }
+  .p-front__video iframe {
+    min-width: calc(15.625rem * 16 / 9);
+  }
 }
 .p-front__title {
   position: absolute;
   top: 32%;
   left: 24%;
+  z-index: 2;
   color: #ffffff;
   max-width: 45.75rem;
 }
@@ -9687,74 +9708,96 @@ body.page-template-page-organization main {
     font-size: 0.9375rem;
   }
 }
+.p-thoughts-mission__blocks {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
 .p-thoughts-mission__philosophy {
-  margin-bottom: 2.5rem;
-  padding: 4.5rem 3rem;
-  border-radius: 1.5rem;
-  background: linear-gradient(160deg, rgba(0, 42, 90, 0.88), rgba(0, 92, 171, 0.82)), url("../img/archive/LogisticsCenter01_img06.png") center/cover no-repeat;
-  color: #ffffff;
-}
-@media screen and (max-width: 767px) {
-  .p-thoughts-mission__philosophy {
-    padding: 3rem 1.5rem;
-  }
-}
-.p-thoughts-mission__philosophy .p-thoughts-mission__box-label {
-  color: rgba(255, 255, 255, 0.85);
-}
-.p-thoughts-mission__philosophy-text {
-  margin: 0;
-  font-family: "Noto Serif JP", serif;
-  font-size: 1.25rem;
-  line-height: 2.05;
-  letter-spacing: 0.06em;
-}
-@media screen and (max-width: 767px) {
-  .p-thoughts-mission__philosophy-text {
-    font-size: 1rem;
-  }
-}
-
-.p-thoughts-guidelines {
-  padding: 3rem 2.5rem;
-  border-radius: 1.5rem;
-  background: #f5f7fa;
+  width: 100%;
+  margin: 0 0 4.5rem;
+  padding: 0;
+  background: #ffffff;
+  color: #1d1d1f;
   text-align: left;
 }
 @media screen and (max-width: 767px) {
-  .p-thoughts-guidelines {
-    padding: 2.25rem 1.5rem;
+  .p-thoughts-mission__philosophy {
+    margin-bottom: 3rem;
   }
 }
-.p-thoughts-guidelines .p-thoughts-mission__box-label {
-  margin-bottom: 1.75rem;
-  text-align: center;
+.p-thoughts-mission__philosophy .p-thoughts-mission__mission-label {
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+.p-thoughts-mission__philosophy-text {
+  margin: 0;
+  padding-left: 2em;
   font-family: "Noto Serif JP", serif;
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-size: clamp(1.32rem, 2.35vw, 1.9rem);
   font-weight: 500;
-  letter-spacing: 0.12em;
+  line-height: 2;
+  letter-spacing: 0.06em;
   color: #1d1d1f;
+  text-align: left;
+}
+
+.p-thoughts-guidelines {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  text-align: left;
+}
+.p-thoughts-guidelines .p-thoughts-mission__mission-label {
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+.p-thoughts-guidelines__lead {
+  margin: 0 0 1.75rem;
+  padding-left: 2em;
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(1.32rem, 2.35vw, 1.9rem);
+  font-weight: 500;
+  line-height: 2;
+  letter-spacing: 0.06em;
+  color: #1d1d1f;
+  text-align: left;
+}
+@media screen and (max-width: 767px) {
+  .p-thoughts-guidelines__lead {
+    margin-bottom: 1.25rem;
+  }
 }
 .p-thoughts-guidelines__list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 2em;
   display: grid;
-  gap: 1rem;
+  gap: 0;
+  counter-reset: guideline;
+  text-align: left;
 }
 .p-thoughts-guidelines__item {
-  padding: 1.5rem 1.75rem;
-  border-radius: 1rem;
-  background: #ffffff;
-  font-size: 1rem;
-  line-height: 1.8;
-  text-align: center;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 0.35em;
+  align-items: start;
+  counter-increment: guideline;
+  padding: 0.25rem 0;
+  background: transparent;
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(1.32rem, 2.35vw, 1.9rem);
+  font-weight: 500;
+  line-height: 2;
+  letter-spacing: 0.06em;
+  color: #1d1d1f;
+  text-align: left;
 }
-@media screen and (max-width: 767px) {
-  .p-thoughts-guidelines__item {
-    font-size: 0.875rem;
-    padding: 1.25rem;
-  }
+.p-thoughts-guidelines__item::before {
+  content: counter(guideline) ".";
+  margin-right: 0;
 }
 
 .p-thoughts-closing {

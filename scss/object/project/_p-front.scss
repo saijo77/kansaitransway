@@ -34,6 +34,7 @@
     left: 50%;
     transform: translateX(-50%);
     bottom: rem(50);
+    z-index: 2;
     width: rem(76);
     height: rem(48);
     animation: sdb05 1.5s infinite;
@@ -92,6 +93,7 @@
     position: absolute;
     top: rem(30);
     left: rem(30);
+    z-index: 2;
     display: inline-block;
     width: rem(160);
 
@@ -105,15 +107,34 @@
   }
 
   &__video {
+    position: relative;
+    z-index: 0;
     width: 100%;
     height: rem(700);
-    object-fit: cover;
-    object-position: center;
-    // border-radius: rem(15);
+    overflow: hidden;
+    background: #000;
+    isolation: isolate;
+
+    iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: calc(100vw * 9 / 16);
+      min-width: calc(#{rem(700)} * 16 / 9);
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      border: 0;
+      pointer-events: none;
+    }
 
     @include mq(md) {
       height: rem(250);
       border-radius: rem(0);
+
+      iframe {
+        min-width: calc(#{rem(250)} * 16 / 9);
+      }
     }
   }
 
@@ -121,6 +142,7 @@
     position: absolute;
     top: 32%;
     left: 24%;
+    z-index: 2;
     color: #ffffff;
     max-width: rem(732);
 

@@ -183,26 +183,30 @@ $theme_uri = get_template_directory_uri();
         </p>
       </div>
 
-      <div class="p-thoughts-mission__philosophy">
-        <p class="p-thoughts-mission__box-label">経営理念</p>
-        <p class="p-thoughts-mission__philosophy-text">
-          最高の現場力を持ち、品質・安心・安全をお届けし、<br class="u-change_pc">
-          くらしに地域社会に貢献する会社になること。<br><br>
-          そして私たちは常に積極の姿勢を持ち、朗らかに、たくましく、<br class="u-change_pc">
-          社員と共に永続するいい会社を目指します。
-        </p>
-      </div>
+      <div class="p-thoughts-mission__blocks">
+        <div class="p-thoughts-mission__philosophy">
+          <p class="p-thoughts-mission__mission-label">経営理念</p>
+          <p class="p-thoughts-mission__philosophy-text">
+            最高の現場力を持ち、品質・安心・安全をお届けし、<br class="u-change_pc">
+            くらしに地域社会に貢献する会社になること。<br>
+            そして私たちは常に積極の姿勢を持ち、朗らかに、たくましく、<br class="u-change_pc">
+            社員と共に永続するいい会社を目指します。
+          </p>
+        </div>
 
-      <div class="p-thoughts-guidelines">
-        <p class="p-thoughts-mission__box-label">行動指針</p>
-        <ul class="p-thoughts-guidelines__list">
-          <li class="p-thoughts-guidelines__item">
-            情熱を原動力に、挑戦を続け、安心と笑顔を届ける行動を積み重ねます。
-          </li>
-          <li class="p-thoughts-guidelines__item">
-            情熱の先にある笑顔こそが、私たちの誇りです。
-          </li>
-        </ul>
+        <div class="p-thoughts-guidelines">
+          <p class="p-thoughts-mission__mission-label">行動指針</p>
+          <p class="p-thoughts-guidelines__lead">
+            「トランスWAY」として５つの行動指針を指示します
+          </p>
+          <ol class="p-thoughts-guidelines__list">
+            <li class="p-thoughts-guidelines__item"><span>チームワークで仕事を成し遂げる</span></li>
+            <li class="p-thoughts-guidelines__item"><span>半歩先を熟考して、答えのないところに答えを出していく</span></li>
+            <li class="p-thoughts-guidelines__item"><span>２流の戦略と１流の実行力でのスピード経営</span></li>
+            <li class="p-thoughts-guidelines__item"><span>学び続ける力</span></li>
+            <li class="p-thoughts-guidelines__item"><span>感謝と謙虚と挑戦と前しか向かない姿勢</span></li>
+          </ol>
+        </div>
       </div>
     </div>
   </section>
