@@ -12,8 +12,9 @@ jobs:
       - name: Deploy to Server via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.HOST }}
+          host: 133.18.35.25
           username: ${{ secrets.USERNAME }}
+          port: 10022
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /home/kir239566/public_html/wp-content/themes/kansaitransway
