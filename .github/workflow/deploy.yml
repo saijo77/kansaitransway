@@ -1,0 +1,3 @@
+script: |
+            cd /home/kir239566/public_html/wp-content/themes/kansaitransway
+            git pull origin main
