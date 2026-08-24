@@ -15,7 +15,7 @@
   <div class="p-404">
     <div class="p-404__inner">
       <p class="p-404__code" aria-hidden="true">404</p>
-      <h2 class="p-404__title">お探しのページが<br class="u-change_md">見つかりませんでした</h2>
+      <h2 class="p-404__title">お探しのページが<br class="u-change_md">見つかりませんでした。</h2>
       <p class="p-404__text">
         お探しのページが見つかりません。<br>
         <br>
