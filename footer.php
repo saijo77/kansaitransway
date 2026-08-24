@@ -7,7 +7,7 @@
         <div class="l-footer-contact__wrapper">
             <h2 class="l-footer-contact__title">Contact<span>お問い合わせ</span></h2>
             <p class="l-footer-contact__text">
-                物流業務に関するご相談やご依頼など、<br class="u-change_md">お気軽にお問合せください。<br>
+                物流業務に関するご相談や依頼など、<br class="u-change_md">お気軽にお問合せください。<br>
                 17時以降および土日祝日のお問合せは、<br class="u-change_md">翌営業日のご連絡とさせて頂く<br class="u-change_pc">場合が<br class="u-change_md">ございます。
             </p>
             <a href="<?php echo home_url('/contact/'); ?>" class="l-footer-contact__link">お問い合わせはこちら</a>
