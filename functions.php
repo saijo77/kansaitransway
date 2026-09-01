@@ -784,3 +784,22 @@ function custom_theme_redirect_legacy_csr_urls()
   exit;
 }
 add_action('template_redirect', 'custom_theme_redirect_legacy_csr_urls', 1);
+
+/**
+ * 旧テーマ名 custom_theme の画像パスを現テーマへ置換
+ */
+function custom_theme_replace_legacy_theme_uri($content)
+{
+  if (empty($content) || !is_string($content)) {
+    return $content;
+  }
+
+  $theme_slug = get_template();
+  $replacements = array(
+    home_url('/wp-content/themes/custom_theme/') => trailingslashit(get_template_directory_uri()),
+    '/wp-content/themes/custom_theme/' => '/wp-content/themes/' . $theme_slug . '/',
+  );
+
+  return str_replace(array_keys($replacements), array_values($replacements), $content);
+}
+add_filter('the_content', 'custom_theme_replace_legacy_theme_uri');
