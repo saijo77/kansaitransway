@@ -715,7 +715,9 @@ add_action('wp_enqueue_scripts', 'custom_theme_enqueue_contact_scripts');
  */
 function custom_theme_csr_enqueue_fonts()
 {
-  if (!is_page_template('page-csr.php') && !is_page_template('page-csr-hub.php')) {
+  $page = get_queried_object();
+  $is_monoru = $page instanceof WP_Post && 'monoru' === $page->post_name;
+  if (!is_page_template('page-csr.php') && !is_page_template('page-csr-hub.php') && !is_page_template('page-monoru.php') && !$is_monoru) {
     return;
   }
 
@@ -803,3 +805,92 @@ function custom_theme_replace_legacy_theme_uri($content)
   return str_replace(array_keys($replacements), array_values($replacements), $content);
 }
 add_filter('the_content', 'custom_theme_replace_legacy_theme_uri');
+
+/**
+ * /topics/monoru/ をチームモノルテンプレートで表示
+ */
+function custom_theme_monoru_template($template)
+{
+  if (!is_page()) {
+    return $template;
+  }
+
+  $page = get_queried_object();
+  if (!$page instanceof WP_Post || 'monoru' !== $page->post_name) {
+    return $template;
+  }
+
+  $monoru_template = locate_template('page-monoru.php');
+  return $monoru_template ?: $template;
+}
+add_filter('template_include', 'custom_theme_monoru_template', 20);
+
+/**
+ * チームモノル固定ページとメニューが無ければ作成する
+ */
+function custom_theme_ensure_monoru_page()
+{
+  $parent = get_page_by_path('topics');
+  if (!$parent instanceof WP_Post) {
+    return;
+  }
+
+  $page = get_page_by_path('topics/monoru');
+  if (!$page instanceof WP_Post) {
+    $page_id = wp_insert_post(array(
+      'post_title'  => 'チーム モノル',
+      'post_name'   => 'monoru',
+      'post_status' => 'publish',
+      'post_type'   => 'page',
+      'post_parent' => $parent->ID,
+    ));
+    if (is_wp_error($page_id) || !$page_id) {
+      return;
+    }
+    update_post_meta($page_id, '_wp_page_template', 'page-monoru.php');
+    $page = get_post($page_id);
+  } else {
+    update_post_meta($page->ID, '_wp_page_template', 'page-monoru.php');
+  }
+
+  $locations = get_nav_menu_locations();
+  $menu_ids = array_unique(array_filter(array(
+    isset($locations['header-nav']) ? (int) $locations['header-nav'] : 0,
+    isset($locations['hamburger-nav']) ? (int) $locations['hamburger-nav'] : 0,
+    isset($locations['footer-nav']) ? (int) $locations['footer-nav'] : 0,
+    6,
+    7,
+  )));
+
+  foreach ($menu_ids as $menu_id) {
+    $items = wp_get_nav_menu_items($menu_id);
+    if (!$items) {
+      continue;
+    }
+
+    $topics_item_id = 0;
+    $exists = false;
+    foreach ($items as $item) {
+      if ((int) $item->object_id === (int) $page->ID) {
+        $exists = true;
+      }
+      if ('Topics' === $item->title && 0 === (int) $item->menu_item_parent) {
+        $topics_item_id = (int) $item->ID;
+      }
+    }
+
+    if ($exists || !$topics_item_id) {
+      continue;
+    }
+
+    wp_update_nav_menu_item($menu_id, 0, array(
+      'menu-item-title'     => 'チーム モノル',
+      'menu-item-object'    => 'page',
+      'menu-item-object-id' => $page->ID,
+      'menu-item-type'      => 'post_type',
+      'menu-item-status'    => 'publish',
+      'menu-item-parent-id' => $topics_item_id,
+    ));
+  }
+}
+add_action('init', 'custom_theme_ensure_monoru_page');
