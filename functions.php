@@ -807,7 +807,7 @@ function custom_theme_replace_legacy_theme_uri($content)
 add_filter('the_content', 'custom_theme_replace_legacy_theme_uri');
 
 /**
- * /topics/monoru/ をチームモノルテンプレートで表示
+ * /monoru/ をチームモノルテンプレートで表示
  */
 function custom_theme_monoru_template($template)
 {
@@ -826,32 +826,58 @@ function custom_theme_monoru_template($template)
 add_filter('template_include', 'custom_theme_monoru_template', 20);
 
 /**
- * チームモノル固定ページとメニューが無ければ作成する
+ * 旧 /topics/monoru/ を /monoru/ へ恒久転送
  */
-function custom_theme_ensure_monoru_page()
+function custom_theme_redirect_legacy_monoru_url()
 {
-  $parent = get_page_by_path('topics');
-  if (!$parent instanceof WP_Post) {
+  $request_path = wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
+  if (!is_string($request_path)) {
     return;
   }
 
-  $page = get_page_by_path('topics/monoru');
+  $request_path = '/' . trim($request_path, '/') . '/';
+  if ('/topics/monoru/' !== $request_path) {
+    return;
+  }
+
+  wp_safe_redirect(home_url('/monoru/'), 301);
+  exit;
+}
+add_action('template_redirect', 'custom_theme_redirect_legacy_monoru_url', 1);
+
+/**
+ * チームモノル固定ページを独立URLにし、ヘッダーに「キャラクター」を配置する
+ */
+function custom_theme_ensure_monoru_page()
+{
+  $page = get_page_by_path('monoru');
+  if (!$page instanceof WP_Post) {
+    $page = get_page_by_path('topics/monoru');
+  }
+
   if (!$page instanceof WP_Post) {
     $page_id = wp_insert_post(array(
       'post_title'  => 'チーム モノル',
       'post_name'   => 'monoru',
       'post_status' => 'publish',
       'post_type'   => 'page',
-      'post_parent' => $parent->ID,
+      'post_parent' => 0,
     ));
     if (is_wp_error($page_id) || !$page_id) {
       return;
     }
-    update_post_meta($page_id, '_wp_page_template', 'page-monoru.php');
     $page = get_post($page_id);
-  } else {
-    update_post_meta($page->ID, '_wp_page_template', 'page-monoru.php');
+  } elseif (0 !== (int) $page->post_parent || 'publish' !== $page->post_status) {
+    wp_update_post(array(
+      'ID'          => $page->ID,
+      'post_parent' => 0,
+      'post_name'   => 'monoru',
+      'post_status' => 'publish',
+    ));
+    $page = get_post($page->ID);
   }
+
+  update_post_meta($page->ID, '_wp_page_template', 'page-monoru.php');
 
   $locations = get_nav_menu_locations();
   $menu_ids = array_unique(array_filter(array(
@@ -868,28 +894,60 @@ function custom_theme_ensure_monoru_page()
       continue;
     }
 
-    $topics_item_id = 0;
-    $exists = false;
+    $thoughts_item = null;
+    $topics_item = null;
+    $character_item = null;
+    $legacy_team_items = array();
+
     foreach ($items as $item) {
-      if ((int) $item->object_id === (int) $page->ID) {
-        $exists = true;
+      $title = trim((string) $item->title);
+      $is_top = 0 === (int) $item->menu_item_parent;
+
+      if ($is_top && '私たちの想い' === $title) {
+        $thoughts_item = $item;
       }
-      if ('Topics' === $item->title && 0 === (int) $item->menu_item_parent) {
-        $topics_item_id = (int) $item->ID;
+      if ($is_top && 'Topics' === $title) {
+        $topics_item = $item;
+      }
+      if ($is_top && 'キャラクター' === $title) {
+        $character_item = $item;
+      }
+      if ('チーム モノル' === $title || 'チームモノル' === $title) {
+        $legacy_team_items[] = $item;
       }
     }
 
-    if ($exists || !$topics_item_id) {
+    foreach ($legacy_team_items as $legacy_item) {
+      wp_delete_post($legacy_item->ID, true);
+    }
+
+    if (!$thoughts_item || !$topics_item) {
       continue;
     }
 
-    wp_update_nav_menu_item($menu_id, 0, array(
-      'menu-item-title'     => 'チーム モノル',
+    $character_item_id = $character_item ? (int) $character_item->ID : 0;
+    $item_args = array(
+      'menu-item-title'     => 'キャラクター',
       'menu-item-object'    => 'page',
       'menu-item-object-id' => $page->ID,
       'menu-item-type'      => 'post_type',
       'menu-item-status'    => 'publish',
-      'menu-item-parent-id' => $topics_item_id,
+      'menu-item-parent-id' => 0,
+    );
+
+    $character_item_id = (int) wp_update_nav_menu_item($menu_id, $character_item_id, $item_args);
+    if (!$character_item_id || is_wp_error($character_item_id)) {
+      continue;
+    }
+
+    $thoughts_order = (int) $thoughts_item->menu_order;
+    wp_update_post(array(
+      'ID'         => $character_item_id,
+      'menu_order' => $thoughts_order + 1,
+    ));
+    wp_update_post(array(
+      'ID'         => (int) $topics_item->ID,
+      'menu_order' => $thoughts_order + 2,
     ));
   }
 }

@@ -11,7 +11,7 @@
 				<div class="p-front__video">
 					<iframe
 						id="myVideo"
-						src="https://www.youtube.com/embed/Ah580gNGT0o?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=Ah580gNGT0o&amp;controls=0&amp;modestbranding=1&amp;playsinline=1&amp;rel=0&amp;enablejsapi=1"
+						src="https://www.youtube.com/embed/Ah580gNGT0o?mute=1&amp;loop=1&amp;playlist=Ah580gNGT0o&amp;controls=0&amp;modestbranding=1&amp;playsinline=1&amp;rel=0&amp;enablejsapi=1"
 						title="YouTube video player"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						referrerpolicy="strict-origin-when-cross-origin"
@@ -398,16 +398,21 @@
 
 <script>
 	var ytHeroPlayer = null;
+	var shouldPlayHeroVideo = false;
 
 	window.onYouTubeIframeAPIReady = function () {
 		ytHeroPlayer = new YT.Player('myVideo', {
 			events: {
 				onReady: function (event) {
 					event.target.mute();
-					event.target.playVideo();
+					event.target.pauseVideo();
+					if (shouldPlayHeroVideo) {
+						playHeroVideo();
+					}
 				},
 				onStateChange: function (event) {
 					if (event.data === YT.PlayerState.ENDED) {
+						event.target.seekTo(0);
 						event.target.playVideo();
 					}
 				}
@@ -416,10 +421,15 @@
 	};
 
 	function playHeroVideo() {
-		if (ytHeroPlayer && typeof ytHeroPlayer.playVideo === 'function') {
-			ytHeroPlayer.mute();
-			ytHeroPlayer.playVideo();
+		shouldPlayHeroVideo = true;
+		if (!ytHeroPlayer || typeof ytHeroPlayer.playVideo !== 'function') {
+			return;
 		}
+		ytHeroPlayer.mute();
+		if (typeof ytHeroPlayer.seekTo === 'function') {
+			ytHeroPlayer.seekTo(0);
+		}
+		ytHeroPlayer.playVideo();
 	}
 
     $(document).ready(function() {
