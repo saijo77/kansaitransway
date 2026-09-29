@@ -715,7 +715,9 @@ add_action('wp_enqueue_scripts', 'custom_theme_enqueue_contact_scripts');
  */
 function custom_theme_csr_enqueue_fonts()
 {
-  if (!is_page_template('page-csr.php') && !is_page_template('page-csr-hub.php')) {
+  $page = get_queried_object();
+  $is_monoru = $page instanceof WP_Post && 'monoru' === $page->post_name;
+  if (!is_page_template('page-csr.php') && !is_page_template('page-csr-hub.php') && !is_page_template('page-monoru.php') && !$is_monoru) {
     return;
   }
 
@@ -803,3 +805,150 @@ function custom_theme_replace_legacy_theme_uri($content)
   return str_replace(array_keys($replacements), array_values($replacements), $content);
 }
 add_filter('the_content', 'custom_theme_replace_legacy_theme_uri');
+
+/**
+ * /monoru/ をチームモノルテンプレートで表示
+ */
+function custom_theme_monoru_template($template)
+{
+  if (!is_page()) {
+    return $template;
+  }
+
+  $page = get_queried_object();
+  if (!$page instanceof WP_Post || 'monoru' !== $page->post_name) {
+    return $template;
+  }
+
+  $monoru_template = locate_template('page-monoru.php');
+  return $monoru_template ?: $template;
+}
+add_filter('template_include', 'custom_theme_monoru_template', 20);
+
+/**
+ * 旧 /topics/monoru/ を /monoru/ へ恒久転送
+ */
+function custom_theme_redirect_legacy_monoru_url()
+{
+  $request_path = wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
+  if (!is_string($request_path)) {
+    return;
+  }
+
+  $request_path = '/' . trim($request_path, '/') . '/';
+  if ('/topics/monoru/' !== $request_path) {
+    return;
+  }
+
+  wp_safe_redirect(home_url('/monoru/'), 301);
+  exit;
+}
+add_action('template_redirect', 'custom_theme_redirect_legacy_monoru_url', 1);
+
+/**
+ * チームモノル固定ページを独立URLにし、ヘッダーに「キャラクター」を配置する
+ */
+function custom_theme_ensure_monoru_page()
+{
+  $page = get_page_by_path('monoru');
+  if (!$page instanceof WP_Post) {
+    $page = get_page_by_path('topics/monoru');
+  }
+
+  if (!$page instanceof WP_Post) {
+    $page_id = wp_insert_post(array(
+      'post_title'  => 'チーム モノル',
+      'post_name'   => 'monoru',
+      'post_status' => 'publish',
+      'post_type'   => 'page',
+      'post_parent' => 0,
+    ));
+    if (is_wp_error($page_id) || !$page_id) {
+      return;
+    }
+    $page = get_post($page_id);
+  } elseif (0 !== (int) $page->post_parent || 'publish' !== $page->post_status) {
+    wp_update_post(array(
+      'ID'          => $page->ID,
+      'post_parent' => 0,
+      'post_name'   => 'monoru',
+      'post_status' => 'publish',
+    ));
+    $page = get_post($page->ID);
+  }
+
+  update_post_meta($page->ID, '_wp_page_template', 'page-monoru.php');
+
+  $locations = get_nav_menu_locations();
+  $menu_ids = array_unique(array_filter(array(
+    isset($locations['header-nav']) ? (int) $locations['header-nav'] : 0,
+    isset($locations['hamburger-nav']) ? (int) $locations['hamburger-nav'] : 0,
+    isset($locations['footer-nav']) ? (int) $locations['footer-nav'] : 0,
+    6,
+    7,
+  )));
+
+  foreach ($menu_ids as $menu_id) {
+    $items = wp_get_nav_menu_items($menu_id);
+    if (!$items) {
+      continue;
+    }
+
+    $thoughts_item = null;
+    $topics_item = null;
+    $character_item = null;
+    $legacy_team_items = array();
+
+    foreach ($items as $item) {
+      $title = trim((string) $item->title);
+      $is_top = 0 === (int) $item->menu_item_parent;
+
+      if ($is_top && '私たちの想い' === $title) {
+        $thoughts_item = $item;
+      }
+      if ($is_top && 'Topics' === $title) {
+        $topics_item = $item;
+      }
+      if ($is_top && 'キャラクター' === $title) {
+        $character_item = $item;
+      }
+      if ('チーム モノル' === $title || 'チームモノル' === $title) {
+        $legacy_team_items[] = $item;
+      }
+    }
+
+    foreach ($legacy_team_items as $legacy_item) {
+      wp_delete_post($legacy_item->ID, true);
+    }
+
+    if (!$thoughts_item || !$topics_item) {
+      continue;
+    }
+
+    $character_item_id = $character_item ? (int) $character_item->ID : 0;
+    $item_args = array(
+      'menu-item-title'     => 'キャラクター',
+      'menu-item-object'    => 'page',
+      'menu-item-object-id' => $page->ID,
+      'menu-item-type'      => 'post_type',
+      'menu-item-status'    => 'publish',
+      'menu-item-parent-id' => 0,
+    );
+
+    $character_item_id = (int) wp_update_nav_menu_item($menu_id, $character_item_id, $item_args);
+    if (!$character_item_id || is_wp_error($character_item_id)) {
+      continue;
+    }
+
+    $thoughts_order = (int) $thoughts_item->menu_order;
+    wp_update_post(array(
+      'ID'         => $character_item_id,
+      'menu_order' => $thoughts_order + 1,
+    ));
+    wp_update_post(array(
+      'ID'         => (int) $topics_item->ID,
+      'menu_order' => $thoughts_order + 2,
+    ));
+  }
+}
+add_action('init', 'custom_theme_ensure_monoru_page');
