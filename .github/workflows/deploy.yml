@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:  # ← この行を追加する
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -13,7 +13,7 @@ jobs:
       - name: Deploy to Server via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: 133.18.35.25
+          host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: 10022
           key: ${{ secrets.SSH_PRIVATE_KEY }}
