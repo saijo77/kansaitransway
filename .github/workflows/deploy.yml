@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:  # ← この行を追加する
 
 jobs:
   deploy:
@@ -16,8 +17,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: 10022
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          # 秘密鍵にパスフレーズがある場合のみコメントアウト解除
-          # passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
             cd /home/kir239566/public_html/wp-content/themes/kansaitransway
             git fetch origin main
